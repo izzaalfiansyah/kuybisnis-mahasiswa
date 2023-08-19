@@ -8,8 +8,6 @@
 
     <title>{{ config('app.name', 'KuyBisnis') }}</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -93,7 +91,7 @@
             </div>
         </div>
         <div class="lg:ml-72">
-            <div class="shadow bg-white mb-10">
+            <div class="shadow bg-white mb-8 sticky top-0 left-0 right-0 z-[10]">
                 <div class="flex items-center justify-between h-20 px-5">
                     <div class="flex items-center">
                         <button type="button" class="lg:hidden" x-on:click="showSidebar = true">
