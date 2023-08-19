@@ -10,11 +10,11 @@
         </p>
     </header>
 
-    <button type="button" class="btn btn-warning" x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">Hapus Akun</button>
+    <button type="button" class="btn bg-red-500 btn-warning text-white" onclick="user_delete.showModal()">Hapus
+        Akun</button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+    <x-dialog id="user_delete">
+        <form method="post" action="{{ route('profile.destroy') }}" class="modal-box">
             @csrf
             @method('delete')
 
@@ -37,14 +37,10 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
-                    Batal
-                </x-secondary-button>
-
                 <x-danger-button class="ml-3">
                     Hapus Akun
                 </x-danger-button>
             </div>
         </form>
-    </x-modal>
+    </x-dialog>
 </section>
