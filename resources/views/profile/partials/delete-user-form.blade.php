@@ -1,14 +1,8 @@
 <section class="space-y-6">
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            Hapus Akun
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
-            Setelah akun kamu terhapus, semua data yang tersimpan di aplikasi juga akan terhapus permanen. Sebelum
-            menghapus akun, pikirkan terlebih dahulu matang-matang data kamu yang ada di aplikasi.
-        </p>
-    </header>
+    <div>
+        Setelah akun kamu terhapus, semua data yang tersimpan di aplikasi juga akan terhapus permanen. Sebelum
+        menghapus akun, pikirkan terlebih dahulu matang-matang data kamu yang ada di aplikasi.
+    </div>
 
     <button type="button" class="btn bg-red-500 btn-warning text-white" onclick="user_delete.showModal()">Hapus
         Akun</button>

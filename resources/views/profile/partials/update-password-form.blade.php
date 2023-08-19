@@ -1,14 +1,4 @@
 <section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            Update Password
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
-            Pastikan password kamu aman.
-        </p>
-    </header>
-
     <form method="post" action="{{ route('password.update') }}">
         @csrf
         @method('put')
