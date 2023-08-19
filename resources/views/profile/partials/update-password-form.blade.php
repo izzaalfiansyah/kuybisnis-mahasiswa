@@ -32,7 +32,7 @@
 
         <div class="form-control">
             <label for="password_confirmation" class="label">
-                Password
+                Konfirmasi Password
             </label>
             <input type="password" class="input input-bordered w-full" autocomplete="new-password"
                 name="password_confirmation">

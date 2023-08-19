@@ -14,6 +14,10 @@
 </head>
 
 <body class="antialiased admin" x-data="{ showSidebar: false }">
+    <div x-data="{ show: true }" x-transition x-show="show" x-init="setTimeout(() => show = false, 800)"
+        class="fixed top-0 left-0 right-0 bottom-0 bg-white flex items-center justify-center z-[99999]">
+        <img src="{{ asset('assets/home/img/preloader.gif') }}" alt="Loading">
+    </div>
     {{-- <div class="lg:p-5 bg-gradient-to-br from-primary to-[#12d1bb]"> --}}
     <div class="min-h-screen bg-gray-50 overflow-hidden">
         <div x-bind:class="'z-[39] fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 ' + (showSidebar ? 'translate-x-0' :
@@ -27,7 +31,7 @@
             <div class="bg-primary p-4 px-8">
                 <div class="rounded-full bg-gray-200 w-20 h-20"></div>
                 <div class="mt-5">
-                    <div class="truncate text-sm">Muhammad Izza Alfiansyah</div>
+                    <div class="truncate">Muhammad Izza Alfiansyah</div>
                     <div class="flex items-center gap-x-2 mt-2">
                         <a href="/profile" class="block">
                             <i class="material-icons text-lg">person</i>
@@ -43,40 +47,40 @@
                 @php
                     $menus = [
                         [
-                            'path' => '/dashboard',
+                            'path' => './dashboard',
                             'title' => 'Beranda',
                             'icon' => 'home',
                         ],
                         [
-                            'path' => '/kewirausahaan',
+                            'path' => './kewirausahaan',
                             'title' => 'Kewirausahaan',
                             'icon' => 'event',
                         ],
                         [
-                            'path' => '/pemasaran-bisnis',
+                            'path' => './pemasaran-bisnis',
                             'title' => 'Pemasaran Bisnis',
                             'icon' => 'filter_alt',
                         ],
                         [
-                            'path' => '/penjualan',
+                            'path' => './penjualan',
                             'title' => 'Penjualan',
                             'icon' => 'shopping_cart',
                         ],
                         [
-                            'path' => '/laporan',
+                            'path' => './laporan',
                             'title' => 'Laporan',
                             'icon' => 'description',
                         ],
                         [
-                            'path' => '/profile',
+                            'path' => './profile',
                             'title' => 'Akun',
                             'icon' => 'person',
                         ],
                     ];
                 @endphp
 
-                <div class="badge ml-5 badge-primary text-xs">Main Menu</div>
-                <ul class="menu w-full px-3 rounded-box bg-white text-gray-800">
+                <div class="badge ml-5 rounded-full bg-primary text-white text-sm px-5 py-3">Main Menu</div>
+                <ul class="menu w-full px-3 rounded-box bg-white text-gray-800 text-base">
                     @foreach ($menus as $item)
                         <li>
                             <a class="flex items-center hover:text-primary py-3" href="{{ $item['path'] }}">
