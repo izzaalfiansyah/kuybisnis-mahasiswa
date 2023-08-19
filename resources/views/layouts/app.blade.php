@@ -27,9 +27,11 @@
             x-bind:class="'fixed top-0 left-0 bottom-0 w-72 bg-white shadow z-40 text-white lg:translate-x-0 transition ' + (
                 showSidebar ? 'translate-x-0' : '-translate-x-full')">
             <div class="bg-primary p-4 px-8">
-                <div class="rounded-full bg-gray-200 w-20 h-20"></div>
+                <div class="flex items-center p-5">
+                    <img src="{{ asset('assets/home/img/logo-light.png') }}" alt="Logo APP">
+                </div>
                 <div class="mt-5">
-                    <div class="truncate">Muhammad Izza Alfiansyah</div>
+                    <div class="truncate">{{ request()->user()->name }}</div>
                     <div class="flex items-center gap-x-2 mt-2">
                         <a href="/profile" class="block">
                             <i class="material-icons text-lg">person</i>
