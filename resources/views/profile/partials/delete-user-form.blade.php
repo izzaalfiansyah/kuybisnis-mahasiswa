@@ -15,7 +15,7 @@
 </section>
 
 <x-dialog id="user_delete">
-    <form method="post" action="{{ route('profile.destroy') }}" class="modal-box">
+    <form method="post" action="{{ route('profile.destroy') }}">
         @csrf
         @method('delete')
 
@@ -31,7 +31,7 @@
         <div class="mt-6">
             <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
 
-            <x-text-input id="password" name="password" type="password" class="mt-1 block w-3/4"
+            <x-text-input id="password" name="password" type="password" class="mt-1 block w-full"
                 placeholder="{{ __('Password') }}" />
 
             <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />

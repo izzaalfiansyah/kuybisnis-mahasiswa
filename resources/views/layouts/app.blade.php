@@ -127,7 +127,7 @@
             </div>
         </div>
         <x-dialog id="logout">
-            <form action="{{ route('logout') }}" method="post" class="modal-box">
+            <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <h3 class="font-bold text-lg">Logout!</h3>
                 <p class="py-4">Anda yakin untuk keluar? Sesi anda akan berakhir!</p>

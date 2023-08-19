@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\User;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [BerandaController::class, 'index']);
+    Route::get('/dashboard', [User\BerandaController::class, 'index']);
 });
 
 Route::middleware('auth')->group(function () {
