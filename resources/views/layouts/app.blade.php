@@ -1,3 +1,5 @@
+@props(['title'])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -99,10 +101,10 @@
                         <button type="button" class="lg:hidden" x-on:click="showSidebar = true">
                             <i class="material-icons text-xl mr-4 mt-2">menu</i>
                         </button>
-                        <div class="rounded-full px-4 p-2 bg-gray-100 flex items-center">
+                        <div class="rounded-full px-5 p-2 bg-gray-100 flex items-center">
                             <div class="material-icons text-lg mr-2">home</div>
                             <div class="mr-2">/</div>
-                            Dashboard
+                            {{ isset($title) ? $title : 'Beranda' }}
                         </div>
                     </div>
                     <div x-data="{ show: false }" class="relative">
