@@ -1,6 +1,7 @@
 <x-app-layout title="Kategori Usaha">
     <div x-data="{
         formSaveUrl: '',
+        formDeleteUrl: '',
         nama: '',
         isEdit: false,
     }">
@@ -39,6 +40,13 @@
                                                 saveKategori.showModal();
                                             }"><i
                                                     class="material-icons text-base">edit</i></button>
+                                            <button type="button" class="btn btn-warning bg-red-500 text-white btn-sm"
+                                                x-on:click="() => {
+                                                        formDeleteUrl = `{{ route('admin.usaha-kategori.destroy', $item->id) }}`
+                                                        nama = '{{ $item->nama }}';
+                                                        destroyKategori.showModal();
+                                                    }"><i
+                                                    class="material-icons text-base">delete</i></button>
                                         </td>
                                     </tr>
                                 @empty
@@ -69,6 +77,19 @@
 
                 <div class="mt-5 flex justify-end">
                     <button type="submit" class="btn btn-primary">Simpan Data</button>
+                </div>
+            </form>
+        </x-dialog>
+
+        <x-dialog id="destroyKategori" header="Hapus Kategori">
+            <form x-bind:action="formDeleteUrl" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <p>Anda yakin menghapus kategori <span class="font-semibold" x-html="nama"></span>?</p>
+
+                <div class="mt-5 flex justify-end">
+                    <button type="submit" class="btn btn-warning bg-red-500 text-white">Hapus</button>
                 </div>
             </form>
         </x-dialog>

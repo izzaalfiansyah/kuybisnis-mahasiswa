@@ -21,6 +21,14 @@ class UsahaKategoriController extends Controller
         $data = $req->validated();
         UsahaKategori::create($data);
 
-        return redirect()->route('admin.usaha-kategori.index')->with('success_message', 'kategori berhasil disimpan');
+        return redirect()->route('admin.usaha-kategori.index')->with('success_message', 'kategori berhasil ditambah');
+    }
+
+    function update(UsahaKategoriRequest $req, $id)
+    {
+        $data = $req->validated();
+        UsahaKategori::find($id)->update($data);
+
+        return redirect()->route('admin.usaha-kategori.index')->with('success_message', 'kategori berhasil diedit');
     }
 }
