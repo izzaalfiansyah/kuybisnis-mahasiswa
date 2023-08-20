@@ -45,4 +45,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected $appends = [
+        'kelompok'
+    ];
+
+    function getKelompokAttribute()
+    {
+        $kelompok = Kelompok::where('users_id', $this->id)->first();
+        return $kelompok;
+    }
 }
