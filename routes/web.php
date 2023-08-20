@@ -24,6 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/kewirausahaan', [User\KewirausahaanController::class, 'index']);
     Route::get('/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index']);
     Route::get('/penjualan', [User\PenjualanController::class, 'index']);
+    Route::get('/laporan', [User\LaporanController::class, 'index']);
 });
 
 Route::middleware('auth')->group(function () {

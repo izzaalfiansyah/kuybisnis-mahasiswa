@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Penjualan">
     <div class="card bg-white shadow">
         <div class="card-body">
             <div class="card-title">Penjualan</div>
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="mt-5">
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                <button type="submit" class="btn btn-primary">Tambah Penjualan</button>
             </div>
         </div>
     </div>
