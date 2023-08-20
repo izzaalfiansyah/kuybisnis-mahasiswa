@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(function () {
     Route::get('/dashboard', [Admin\BerandaController::class, 'index'])->name('admin.dashboard.index');
-    Route::resource('/kategori-usaha', Admin\UsahaKategoriController::class, [
+    Route::resource('/usaha-kategori', Admin\UsahaKategoriController::class, [
         'as' => 'admin'
     ]);
 });

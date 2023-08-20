@@ -55,7 +55,7 @@
                                 'icon' => 'home',
                             ],
                             [
-                                'route' => 'admin.kategori-usaha.index',
+                                'route' => 'admin.usaha-kategori.index',
                                 'title' => 'Kategori Usaha',
                                 'icon' => 'sync_alt',
                             ],
