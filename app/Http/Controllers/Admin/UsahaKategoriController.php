@@ -31,4 +31,11 @@ class UsahaKategoriController extends Controller
 
         return redirect()->route('admin.usaha-kategori.index')->with('success_message', 'kategori berhasil diedit');
     }
+
+    function destroy($id)
+    {
+        UsahaKategori::destroy($id);
+
+        return redirect()->route('admin.usaha-kategori.index')->with('success_message', 'kategori berhasil dihapus');
+    }
 }
