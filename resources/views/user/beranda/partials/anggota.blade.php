@@ -2,7 +2,8 @@
     <div class="card-body">
         <div class="flex justify-between items-center">
             <div class="card-title">Anggota Kelompok</div>
-            <button class="btn btn-primary" type="button" onclick="addAnggota.showModal()">Tambah</button>
+            <button class="btn btn-primary {{ $kelompok?->id ?: 'hidden' }}" type="button"
+                onclick="addAnggota.showModal()">Tambah</button>
         </div>
         <div class="mt-5 space-y-3">
             <div class="card card-body border border-gray-200 group overflow-hidden">
