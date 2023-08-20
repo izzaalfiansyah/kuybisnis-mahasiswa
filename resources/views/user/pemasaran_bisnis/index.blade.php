@@ -24,7 +24,8 @@
                 </div>
                 <div class="form-control" x-show="jenis_pemasaran == '1' || jenis_pemasaran == '3'">
                     <label for="" class="label">Pilihan Media</label>
-                    <textarea rows="5" class="textarea textarea-bordered" placeholder="Tuliskan metode yang akan digunakan"></textarea>
+                    <textarea rows="5" class="textarea textarea-bordered resize-none"
+                        placeholder="Tuliskan metode yang akan digunakan"></textarea>
                 </div>
                 <div class="form-control" x-show="jenis_pemasaran == '2' || jenis_pemasaran == '3'">
                     <div class="flex lg:flex-row gap-x-3">
@@ -84,11 +85,11 @@
                 </div>
                 <div class="form-control">
                     <label for="" class="label">Modal Usaha</label>
-                    <input type="number" class="input input-bordered max-w-xl" placeholder="Nominal Rupiah">
+                    <input type="number" class="input input-bordered" placeholder="Nominal Rupiah">
                 </div>
                 <div class="form-control">
                     <label for="" class="label">Jumlah Produksi</label>
-                    <input type="number" class="input input-bordered max-w-xl" placeholder="Jumlah Produksi/Kegiatan">
+                    <input type="number" class="input input-bordered" placeholder="Jumlah Produksi/Kegiatan">
                 </div>
                 <div class="mt-8">
                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
