@@ -6,7 +6,11 @@
                 <div class="h-72"></div>
             </div>
         </div>
-        <div class="card bg-white shadow" x-data="{ jenis_pemasaran: '', media: '', ecommerce: '', }">
+        <div class="card bg-white shadow" x-data="{
+            jenis_pemasaran: '',
+            media: '',
+            ecommerce: '',
+        }">
             <div class="card-body">
                 <div class="card-title mb-5">Proses Pemasaran</div>
                 <div class="form-control mb-3">
@@ -85,6 +89,9 @@
                 <div class="form-control">
                     <label for="" class="label">Jumlah Produksi</label>
                     <input type="number" class="input input-bordered max-w-xl" placeholder="Jumlah Produksi/Kegiatan">
+                </div>
+                <div class="mt-8">
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </div>
             </div>
         </div>
