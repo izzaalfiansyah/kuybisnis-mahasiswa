@@ -53,6 +53,13 @@
                 </div>
             </div>
         </form>
-        @include('user.beranda.partials.anggota')
+        @if ($kelompok)
+            @include('user.beranda.partials.anggota')
+        @else
+            <div class="card bg-white shadow">
+                <div class="card-body text-center">Sebelum menambahkan anggota kamu harus melengkapi identitas
+                    kelompokmu!</div>
+            </div>
+        @endif
     </div>
 </x-app-layout>

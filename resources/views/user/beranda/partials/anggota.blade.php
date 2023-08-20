@@ -71,7 +71,8 @@
                 </div>
             </div>
             <div class="mt-8 flex justify-end">
-                <button type="submit" class="btn btn-primary">Tambahkan</button>
+                <button type="submit" class="btn btn-primary"
+                    x-text="id ? 'Simpan Perubahan' : 'Tambahkan'">Tambahkan</button>
             </div>
         </form>
     </x-dialog>
