@@ -1,9 +1,9 @@
 <x-app-layout>
-    <form method="post" action="{{ route('user.kelompok.store') }}" class="space-y-6">
-        @csrf
-        <input type="text" name="users_id" value="{{ request()->user()->id }}" class="hidden">
-        <input type="text" class="hidden" name="id" value="{{ $kelompok?->id }}">
-        <div class="card bg-white shadow">
+    <div class="space-y-6">
+        <form class="card bg-white shadow" method="post" action="{{ route('user.kelompok.store') }}">
+            @csrf
+            <input type="text" name="users_id" value="{{ request()->user()->id }}" class="hidden">
+            <input type="text" class="hidden" name="id" value="{{ $kelompok?->id }}">
             <div class="card-body">
                 <div class="pb-10 border-b border-gray-200">
                     <div class="card-title">Identitas Kelompok</div>
@@ -52,7 +52,7 @@
                     <button type="submit" class="btn btn-primary w-auto">Simpan Perubahan</button>
                 </div>
             </div>
-        </div>
+        </form>
         @include('user.beranda.partials.anggota')
-    </form>
+    </div>
 </x-app-layout>

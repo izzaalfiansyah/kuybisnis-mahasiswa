@@ -31,6 +31,7 @@ Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
     Route::get('/laporan', [User\LaporanController::class, 'index'])->name('user.laporan.index');
 
     Route::post('/kelompok', [User\KelompokController::class, 'store'])->name('user.kelompok.store');
+    Route::post('/kelompok/anggota', [User\KelompokAnggotaController::class, 'store'])->name('user.kelompok.anggota.store');
 });
 
 Route::middleware('auth')->group(function () {
