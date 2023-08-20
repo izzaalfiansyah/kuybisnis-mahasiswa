@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
 
     Route::post('/kelompok', [User\KelompokController::class, 'store'])->name('user.kelompok.store');
     Route::post('/kelompok/anggota', [User\KelompokAnggotaController::class, 'store'])->name('user.kelompok.anggota.store');
+    Route::delete('/kelompok/anggota/{id}', [User\KelompokAnggotaController::class, 'destroy'])->name('user.kelompok.anggota.destroy');
 });
 
 Route::middleware('auth')->group(function () {

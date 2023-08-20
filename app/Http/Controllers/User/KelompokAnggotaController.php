@@ -27,4 +27,11 @@ class KelompokAnggotaController extends Controller
 
         return redirect()->route('user.dashboard.index')->with('success_message', $req->id ? 'anggota kelompok berhasil diedit' : 'anggota kelompok berhasil ditambah');
     }
+
+    function destroy($id)
+    {
+        KelompokAnggota::destroy($id);
+
+        return redirect()->route('user.dashboard.index')->with('success_message', 'anggota kelompok berhasil dihapus');
+    }
 }

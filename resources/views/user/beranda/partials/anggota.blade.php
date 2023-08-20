@@ -1,8 +1,8 @@
 <div class="card bg-white shadow" x-data="{
-    formUrl: '',
     nama: '',
     nim: '',
     id: '',
+    destroyFormUrl: '',
 }">
     <div class="card-body">
         <div class="flex justify-between items-center">
@@ -12,8 +12,7 @@
                 id = '';
                 nama = '';
                 nim = '';
-                formUrl = '{{ route('user.kelompok.anggota.store') }}'
-                saveAnggota.showModal()
+                saveAnggota.showModal();
             }">Tambah</button>
         </div>
         <div class="mt-5 space-y-3">
@@ -31,10 +30,16 @@
                                 id = '{{ $item->id }}';
                                 nama = '{{ $item->nama }}';
                                 nim = '{{ $item->nim }}';
-                                formUrl = ''
-                                saveAnggota.showModal()
+                                saveAnggota.showModal();
                             }">Edit</button>
-                            <button class="btn btn-sm btn-warning bg-red-500 text-white" type="button">Hapus</button>
+                            <button class="btn btn-sm btn-warning bg-red-500 text-white" type="button"
+                                x-on:click="() => {
+                                id = '{{ $item->id }}';
+                                nama = '{{ $item->nama }}';
+                                nim = '{{ $item->nim }}';
+                                destroyFormUrl = `{{ route('user.kelompok.anggota.destroy', $item->id) }}`
+                                destroyAnggota.showModal();
+                            }">Hapus</button>
                         </div>
                     </div>
                 </div>
@@ -72,7 +77,7 @@
     </x-dialog>
 
     <x-dialog id="destroyAnggota" header="Hapus Anggota">
-        <form action="{{ route('user.kelompok.anggota.destroy') }}" method="post">
+        <form x-bind:action="destroyFormUrl" method="post">
             @csrf
             @method('DELETE')
             <input type="text" class="hidden" name="id" x-model="id">
