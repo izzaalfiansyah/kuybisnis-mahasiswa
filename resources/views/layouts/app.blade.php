@@ -47,38 +47,53 @@
 
             <div class="mt-5">
                 @php
-                    $menus = [
-                        [
-                            'route' => 'user.dashboard.index',
-                            'title' => 'Beranda',
-                            'icon' => 'home',
-                        ],
-                        [
-                            'route' => 'user.kewirausahaan.index',
-                            'title' => 'Kewirausahaan',
-                            'icon' => 'event',
-                        ],
-                        [
-                            'route' => 'user.pemasaran-bisnis.index',
-                            'title' => 'Pemasaran Bisnis',
-                            'icon' => 'filter_alt',
-                        ],
-                        [
-                            'route' => 'user.penjualan.index',
-                            'title' => 'Penjualan',
-                            'icon' => 'shopping_cart',
-                        ],
-                        [
-                            'route' => 'user.laporan.index',
-                            'title' => 'Laporan',
-                            'icon' => 'description',
-                        ],
-                        [
-                            'route' => 'profile.edit',
-                            'title' => 'Akun',
-                            'icon' => 'person',
-                        ],
-                    ];
+                    if (request()->user()->role == '1') {
+                        $menus = [
+                            [
+                                'route' => 'admin.dashboard.index',
+                                'title' => 'Beranda',
+                                'icon' => 'home',
+                            ],
+                            [
+                                'route' => 'profile.edit',
+                                'title' => 'Akun',
+                                'icon' => 'person',
+                            ],
+                        ];
+                    } else {
+                        $menus = [
+                            [
+                                'route' => 'user.dashboard.index',
+                                'title' => 'Beranda',
+                                'icon' => 'home',
+                            ],
+                            [
+                                'route' => 'user.kewirausahaan.index',
+                                'title' => 'Kewirausahaan',
+                                'icon' => 'event',
+                            ],
+                            [
+                                'route' => 'user.pemasaran-bisnis.index',
+                                'title' => 'Pemasaran Bisnis',
+                                'icon' => 'filter_alt',
+                            ],
+                            [
+                                'route' => 'user.penjualan.index',
+                                'title' => 'Penjualan',
+                                'icon' => 'shopping_cart',
+                            ],
+                            [
+                                'route' => 'user.laporan.index',
+                                'title' => 'Laporan',
+                                'icon' => 'description',
+                            ],
+                            [
+                                'route' => 'profile.edit',
+                                'title' => 'Akun',
+                                'icon' => 'person',
+                            ],
+                        ];
+                    }
                 @endphp
 
                 {{-- <div class="badge ml-5 rounded-full bg-primary text-white text-sm px-5 py-3">Main Menu</div> --}}
@@ -92,6 +107,13 @@
                             </a>
                         </li>
                     @endforeach
+                    <li>
+                        <a class="flex items-center hover:text-primary py-3" href="#"
+                            onclick="logout.showModal()">
+                            <div class="material-icons text-lg mr-3">logout</div>
+                            Logout
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
