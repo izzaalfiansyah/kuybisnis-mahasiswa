@@ -6,28 +6,33 @@
         @csrf
 
         <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="'Email'" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
+        <div class="form-control">
+            <label for="" class="label">Email</label>
+            <input type="text" autocomplete="username" name="email" required class="input input-bordered"
+                value="{{ old('email') }}">
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="'Password'" />
-
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="current-password" />
-
+        <div class="form-control" x-data="{
+            showPassword: false,
+        }">
+            <label for="" class="label">Password</label>
+            <div class="relative">
+                <input x-bind:type="showPassword ? 'text' : 'password'" name="password" autocomplete="current-password"
+                    required class="input input-bordered w-full">
+                <button type="button" class="flex items-center px-3 absolute top-0 right-0 bottom-0 text-gray-500"
+                    x-on:click="(e) => showPassword = !showPassword">
+                    <i class="material-icons" x-html="showPassword ? 'visibility' : 'visibility_off'"></i>
+                </button>
+            </div>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Remember Me -->
         <div class="block mt-4 flex justify-between">
             <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox"
-                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <input id="remember_me" type="checkbox" class="checkbox checkbox-primary checkbox-sm" name="remember">
                 <span class="ml-2 text-sm text-gray-600">Ingat Saya</span>
             </label>
 

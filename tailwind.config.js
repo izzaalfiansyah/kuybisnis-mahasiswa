@@ -8,7 +8,7 @@ export default {
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
     ],
-    plugins: [forms, daisyui],
+    plugins: [daisyui],
     daisyui: {
         themes: ["winter"],
     },

@@ -1,34 +1,40 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
+    <form method="POST" action="{{ route('password.store') }}" x-data="{
+        showPassword: false,
+    }">
         @csrf
 
         <!-- Password Reset Token -->
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
         <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="'Email'" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required
-                autofocus autocomplete="username" />
+        <div class="form-control">
+            <label for="" class="label">Email</label>
+            <input type="email" name="email" class="input input-bordered" value="{{ old('email', $request->email) }}"
+                required autocomplete="username" autofocus>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="'Password'" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="new-password" />
+        <div class="form-control">
+            <label for="" class="label">Password</label>
+            <input x-bind:type="showPassword ? 'text' : 'password'" name="password" class="input input-bordered"
+                required autocomplete="new-password">
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="'Konfirmasi Password'" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
-
+        <div class="form-control">
+            <label for="" class="label">Konfirmasi Password</label>
+            <input x-bind:type="showPassword ? 'text' : 'password'" name="password_confirmation"
+                class="input input-bordered" required autocomplete="new-password">
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="mt-4 flex items-center">
+            <input type="checkbox" class="toggle toggle-primary mr-3"
+                x-on:change="(e) => showPassword = e.currentTarget.checked">
+            Tampilkan password
         </div>
 
         <div class="mt-4">

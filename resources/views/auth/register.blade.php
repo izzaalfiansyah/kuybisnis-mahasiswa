@@ -1,41 +1,43 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" x-data="{
+        showPassword: false,
+    }">
         @csrf
 
         <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="'Nama'" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
-                autofocus autocomplete="name" />
+        <div class="form-control">
+            <label for="" class="label">Nama</label>
+            <input type="text" name="name" class="input input-bordered" value="{{ old('name') }}" required>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="'Email'" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                required autocomplete="username" />
+        <div class="form-control">
+            <label for="" class="label">Email</label>
+            <input type="email" name="email" class="input input-bordered" value="{{ old('email') }}" required
+                autocomplete="username">
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="'Password'" />
-
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="new-password" />
-
+        <div class="form-control">
+            <label for="" class="label">Password</label>
+            <input x-bind:type="showPassword ? 'text' : 'password'" class="input input-bordered" name="password"
+                required autocomplete="new-password">
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="'Konfirmasi Password'" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
-
+        <div class="form-control">
+            <label for="" class="label">Konfirmasi Password</label>
+            <input x-bind:type="showPassword ? 'text' : 'password'" class="input input-bordered"
+                name="password_confirmation" required autocomplete="new-password">
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="mt-4 flex items-center">
+            <input type="checkbox" class="toggle toggle-primary mr-3"
+                x-on:change="(e) => showPassword = e.currentTarget.checked">
+            Tampilkan password
         </div>
 
         <button type="submit" class="btn btn-primary w-full mt-5">Daftar</button>
