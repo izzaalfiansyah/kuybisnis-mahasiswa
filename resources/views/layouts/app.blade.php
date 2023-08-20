@@ -55,6 +55,11 @@
                                 'icon' => 'home',
                             ],
                             [
+                                'route' => 'admin.kategori-usaha.index',
+                                'title' => 'Kategori Usaha',
+                                'icon' => 'sync_alt',
+                            ],
+                            [
                                 'route' => 'profile.edit',
                                 'title' => 'Akun',
                                 'icon' => 'person',

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User;
+use App\Http\Controllers\Admin;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,10 @@ Route::get('/', function () {
 });
 
 Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(function () {
-    Route::get('/dashboard', [User\BerandaController::class, 'index'])->name('admin.dashboard.index');
+    Route::get('/dashboard', [Admin\BerandaController::class, 'index'])->name('admin.dashboard.index');
+    Route::resource('/kategori-usaha', Admin\UsahaKategoriController::class, [
+        'as' => 'admin'
+    ]);
 });
 
 Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
