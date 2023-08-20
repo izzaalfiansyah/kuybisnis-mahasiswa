@@ -16,14 +16,15 @@ class KelompokAnggotaController extends Controller
             'anggota_nama' => 'required|max:255',
         ]);
 
+
         $data = [
             'kelompok_id' => $req->kelompok_id,
             'nim' => $req->anggota_nim,
             'nama' => $req->anggota_nama,
         ];
 
-        KelompokAnggota::create($data);
+        KelompokAnggota::updateOrCreate(['id' => $req->id], $data);
 
-        return redirect()->route('user.dashboard.index')->with('success_message', 'anggota kelompok berhasil ditambahkan');
+        return redirect()->route('user.dashboard.index')->with('success_message', $req->id ? 'anggota kelompok berhasil diedit' : 'anggota kelompok berhasil ditambah');
     }
 }
