@@ -23,6 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [User\BerandaController::class, 'index']);
     Route::get('/kewirausahaan', [User\KewirausahaanController::class, 'index']);
     Route::get('/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index']);
+    Route::get('/penjualan', [User\PenjualanController::class, 'index']);
 });
 
 Route::middleware('auth')->group(function () {
