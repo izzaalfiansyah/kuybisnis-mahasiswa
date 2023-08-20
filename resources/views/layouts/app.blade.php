@@ -29,8 +29,8 @@
             x-bind:class="'fixed top-0 left-0 bottom-0 w-72 bg-white shadow z-40 text-white lg:translate-x-0 transition ' + (
                 showSidebar ? 'translate-x-0' : '-translate-x-full')">
             <div class="bg-primary p-4 px-8">
-                <div class="flex items-center p-5">
-                    <img src="{{ asset('assets/home/img/logo-light.png') }}" alt="Logo APP">
+                <div class="flex items-center p-5 bg-white rounded-lg">
+                    <img src="{{ asset('assets/home/img/logo.png') }}" alt="Logo APP">
                 </div>
                 <div class="mt-5">
                     <div class="truncate">{{ request()->user()->name }}</div>
@@ -81,12 +81,13 @@
                     ];
                 @endphp
 
-                <div class="badge ml-5 rounded-full bg-primary text-white text-sm px-5 py-3">Main Menu</div>
+                {{-- <div class="badge ml-5 rounded-full bg-primary text-white text-sm px-5 py-3">Main Menu</div> --}}
                 <ul class="menu w-full px-3 rounded-box bg-white text-gray-800 text-base">
                     @foreach ($menus as $item)
                         <li>
-                            <a class="flex items-center hover:text-primary py-3" href="{{ $item['path'] }}">
-                                <div class="material-icons text-lg mr-3 text-primary">{{ $item['icon'] }}</div>
+                            <a class="flex items-center hover:text-primary py-3 {{ str_replace('./', '', $item['path']) == request()->path() ? '!bg-primary !text-white' : '' }}"
+                                href="{{ $item['path'] }}">
+                                <div class="material-icons text-lg mr-3">{{ $item['icon'] }}</div>
                                 {{ $item['title'] }}
                             </a>
                         </li>
@@ -109,7 +110,8 @@
                     </div>
                     <div x-data="{ show: false }" class="relative">
                         <button x-on:click="show = !show">
-                            <div class="rounded-full h-10 w-10 bg-gray-100"></div>
+                            <img class="rounded-full h-10 w-10 bg-gray-100"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5j1QoysD2S9Mq32jDCO9ExkcKWP19RbcDxA&usqp=CAU" />
                         </button>
                         {{-- <div class="w-[200px] absolute bottom-0 right-0 translate-y-full bg-white border p-3 z-10"> --}}
                         <ul
