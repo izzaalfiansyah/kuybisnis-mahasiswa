@@ -29,6 +29,8 @@ Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
     Route::get('/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index'])->name('user.pemasaran-bisnis.index');
     Route::get('/penjualan', [User\PenjualanController::class, 'index'])->name('user.penjualan.index');
     Route::get('/laporan', [User\LaporanController::class, 'index'])->name('user.laporan.index');
+
+    Route::post('/kelompok', [User\KelompokController::class, 'store'])->name('user.kelompok.store');
 });
 
 Route::middleware('auth')->group(function () {

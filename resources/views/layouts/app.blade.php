@@ -127,6 +127,10 @@
                 </div>
             </div>
             <div class="lg:px-10 p-3 lg:p-5">
+                @if (session()->has('success_message'))
+                    <div class="alert alert-success text-white rounded shadow" x-data="{ show: true }" x-show="show"
+                        x-init="setTimeout(() => show = false, 3000)">{{ session()->get('success_message') }}</div>
+                @endif
                 {{ $slot }}
             </div>
         </div>
