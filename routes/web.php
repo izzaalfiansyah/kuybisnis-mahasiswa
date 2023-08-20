@@ -19,12 +19,16 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [User\BerandaController::class, 'index']);
-    Route::get('/kewirausahaan', [User\KewirausahaanController::class, 'index']);
-    Route::get('/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index']);
-    Route::get('/penjualan', [User\PenjualanController::class, 'index']);
-    Route::get('/laporan', [User\LaporanController::class, 'index']);
+Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(function () {
+    Route::get('/dashboard', [User\BerandaController::class, 'index'])->name('admin.dashboard.index');
+});
+
+Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
+    Route::get('/dashboard', [User\BerandaController::class, 'index'])->name('user.dashboard.index');
+    Route::get('/kewirausahaan', [User\KewirausahaanController::class, 'index'])->name('user.kewirausahaan.index');
+    Route::get('/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index'])->name('user.pemasaran-bisnis.index');
+    Route::get('/penjualan', [User\PenjualanController::class, 'index'])->name('user.penjualan.index');
+    Route::get('/laporan', [User\LaporanController::class, 'index'])->name('user.laporan.index');
 });
 
 Route::middleware('auth')->group(function () {
