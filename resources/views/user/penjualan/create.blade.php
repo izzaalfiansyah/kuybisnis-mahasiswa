@@ -1,22 +1,26 @@
 <x-app-layout title="Penjualan / Tambah">
-    <div class="card bg-white shadow">
+    <form method="post" action="{{ route('user.penjualan.store') }}" class="card bg-white shadow">
+        @csrf
+
+        <input type="text" class="hidden" name="kelompok_id" value="{{ request()->user()->kelompok->id }}">
+
         <div class="card-body">
-            <div class="card-title">Penjualan</div>
+            <div class="card-title">Tambah Penjualan</div>
             <div x-data="{
-                totalPenjualan: 0,
-                hargaJual: 0,
+                penjualanBersih: '{{ old('penjualan_bersih', '0') }}',
+                hargaJualProduk: '{{ old('harga_jual_produk', '0') }}',
                 biaya: {
-                    tetap: 0,
-                    variabel: 0,
-                    operasional: 0,
-                    nonOperasional: 0,
-                    pajak: 0
+                    tetap: '{{ old('biaya_tetap', '0') }}',
+                    variabel: '{{ old('biaya_variabel', '0') }}',
+                    operasional: '{{ old('biaya_operasional', '0') }}',
+                    nonOperasional: '{{ old('biaya_non_operasional', '0') }}',
+                    pajak: '{{ old('biaya_pajak', '0') }}',
                 },
                 totalBiaya() {
                     return parseInt(this.biaya.tetap) + parseInt(this.biaya.variabel) + parseInt(this.biaya.operasional) + parseInt(this.biaya.nonOperasional) + parseInt(this.biaya.pajak);
                 },
                 totalPenjualanBersih() {
-                    return parseInt(this.totalPenjualan) * parseInt(this.hargaJual);
+                    return parseInt(this.penjualanBersih) * parseInt(this.hargaJualProduk);
                 },
                 nilaiKeuntunganBersih() {
                     return this.totalPenjualanBersih() - this.totalBiaya();
@@ -24,39 +28,61 @@
             }">
                 <div class="form-control">
                     <label for="" class="label">Total Penjualan Bersih</label>
-                    <input type="number" min="0" class="input input-bordered" placeholder="Total Penjualan Bersih"
-                        x-model="totalPenjualan">
+                    <input type="number" min="0" class="input input-bordered"
+                        placeholder="Total Penjualan Bersih" x-model="penjualanBersih" name="penjualan_bersih">
+                    <div class="label label-text-alt">
+                        <x-input-error :messages="$errors->get('penjualan_bersih')"></x-input-error>
+                    </div>
                 </div>
                 <div class="form-control">
                     <label for="" class="label">Harga Jual Produk</label>
                     <input type="number" min="0" class="input input-bordered" placeholder="Harga Jual Produk"
-                        x-model="hargaJual">
+                        x-model="hargaJualProduk" name="harga_jual_produk">
+                    <div class="label label-text-alt">
+                        <x-input-error :messages="$errors->get('harga_jual_produk')"></x-input-error>
+                    </div>
                 </div>
                 <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-3">
                     <div class="form-control">
                         <label for="" class="label">Biaya Tetap</label>
                         <input type="number" min="0" class="input input-bordered max-w-xl"
-                            placeholder="Biaya Tetap" x-model="biaya.tetap">
+                            placeholder="Biaya Tetap" x-model="biaya.tetap" name="biaya_tetap">
+                        <div class="label label-text-alt">
+                            <x-input-error :messages="$errors->get('biaya_tetap')"></x-input-error>
+                        </div>
                     </div>
                     <div class="form-control">
                         <label for="" class="label">Biaya Variabel</label>
                         <input type="number" min="0" class="input input-bordered max-w-xl"
-                            placeholder="Biaya Variabel" x-model="biaya.variabel">
+                            placeholder="Biaya Variabel" x-model="biaya.variabel" name="biaya_variabel">
+                        <div class="label label-text-alt">
+                            <x-input-error :messages="$errors->get('biaya_variabel')"></x-input-error>
+                        </div>
                     </div>
                     <div class="form-control">
                         <label for="" class="label">Biaya Operasional</label>
                         <input type="number" min="0" class="input input-bordered max-w-xl"
-                            placeholder="Biaya Operasional" x-model="biaya.operasional">
+                            placeholder="Biaya Operasional" x-model="biaya.operasional" name="biaya_operasional">
+                        <div class="label label-text-alt">
+                            <x-input-error :messages="$errors->get('biaya_operasional')"></x-input-error>
+                        </div>
                     </div>
                     <div class="form-control">
                         <label for="" class="label">Biaya Non Operasional</label>
                         <input type="number" min="0" class="input input-bordered max-w-xl"
-                            placeholder="Biaya Non Operasional" x-model="biaya.nonOperasional">
+                            placeholder="Biaya Non Operasional" x-model="biaya.nonOperasional"
+                            name="biaya_non_operasional">
+                        <div class="label label-text-alt">
+                            <x-input-error :messages="$errors->get('biaya_non_operasional')"></x-input-error>
+                        </div>
                     </div>
                     <div class="form-control">
                         <label for="" class="label">Biaya Pajak</label>
                         <input type="number" min="0" class="input input-bordered max-w-xl"
-                            placeholder="Biaya Pajak" x-model="biaya.pajak">
+                            placeholder="Biaya Pajak" x-model="biaya.pajak" name="biaya_pajak">
+                        <div class="label label-text-alt">
+                            <x-input-error :messages="$errors->get('biaya_pajak')"></x-input-error>
+                        </div>
                     </div>
                 </div>
                 <div class="form-control">
@@ -79,5 +105,5 @@
                 <button type="submit" class="btn btn-primary">Tambah Penjualan</button>
             </div>
         </div>
-    </div>
+    </form>
 </x-app-layout>

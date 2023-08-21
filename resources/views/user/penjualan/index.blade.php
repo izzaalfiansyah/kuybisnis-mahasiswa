@@ -21,9 +21,9 @@
                             @forelse ($penjualan as $item)
                                 <tr>
                                     <td>{{ $item->created_at }}</td>
-                                    <td>{{ $item->total_penjualan_bersih }}</td>
-                                    <td>{{ $item->total_biaya }}</td>
-                                    <td>{{ $item->nilai_keuntungan_bersih }}</td>
+                                    <td><x-format-money :value="$item->total_penjualan_bersih"></x-format-money></td>
+                                    <td><x-format-money :value="$item->total_biaya"></x-format-money></td>
+                                    <td><x-format-money :value="$item->nilai_keuntungan_bersih"></x-format-money></td>
                                     <td>
                                         <a href="" class="btn btn-primary btn-sm"><i
                                                 class="material-icons text-base">edit</i></a>
