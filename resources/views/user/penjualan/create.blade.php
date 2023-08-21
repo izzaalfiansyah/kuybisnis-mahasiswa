@@ -27,7 +27,7 @@
                 },
             }">
                 <div class="form-control">
-                    <label for="" class="label">Total Penjualan Bersih</label>
+                    <label for="" class="label">Penjualan Bersih</label>
                     <input type="number" min="0" class="input input-bordered"
                         placeholder="Total Penjualan Bersih" x-model="penjualanBersih" name="penjualan_bersih">
                     <div class="label label-text-alt">

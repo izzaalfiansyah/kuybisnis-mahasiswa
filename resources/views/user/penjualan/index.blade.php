@@ -20,7 +20,7 @@
                         <tbody>
                             @forelse ($penjualan as $item)
                                 <tr>
-                                    <td>{{ $item->created_at }}</td>
+                                    <td><x-format-date :value="$item->created_at"></x-format-date></td>
                                     <td><x-format-money :value="$item->total_penjualan_bersih"></x-format-money></td>
                                     <td><x-format-money :value="$item->total_biaya"></x-format-money></td>
                                     <td><x-format-money :value="$item->nilai_keuntungan_bersih"></x-format-money></td>
