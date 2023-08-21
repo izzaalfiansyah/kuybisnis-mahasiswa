@@ -1,6 +1,8 @@
 <x-app-layout title="Penjualan">
     @if (request()->user()->kelompok)
-        <div class="card bg-white shadow">
+        <div class="card bg-white shadow" x-data="{
+            deleteFormUrl: '',
+        }">
             <div class="card-body">
                 <div class="flex items-center justify-between">
                     <div class="card-title">Penjualan</div>
@@ -28,8 +30,13 @@
                                         <a href="{{ route('user.penjualan.edit', $item->id) }}"
                                             class="btn btn-primary btn-sm"><i
                                                 class="material-icons text-base">edit</i></a>
-                                        <a href="#" class="btn btn-warning bg-red-500 text-white btn-sm"><i
-                                                class="material-icons text-base">delete</i></a>
+                                        <button type="button" href="#"
+                                            x-on:click="() => {
+                                            deleteFormUrl = '{{ route('user.penjualan.destroy', $item->id) }}';
+                                            deletePenjualan.showModal();
+                                            }"
+                                            class="btn btn-warning bg-red-500 text-white btn-sm"><i
+                                                class="material-icons text-base">delete</i></button>
                                     </td>
                                 </tr>
                             @empty
@@ -41,6 +48,17 @@
                     </table>
                 </div>
             </div>
+
+            <x-dialog id="deletePenjualan" header="Hapus Penjualan">
+                <form x-bind:action="deleteFormUrl" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <p>Anda yakin menghapus data penjualan terpilih?</p>
+                    <div class="mt-5">
+                        <button type="submit" class="btn btn-warning text-white bg-red-500">Hapus</button>
+                    </div>
+                </form>
+            </x-dialog>
         </div>
     @else
         <x-no-kelompok></x-no-kelompok>

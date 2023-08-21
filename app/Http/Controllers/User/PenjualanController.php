@@ -45,4 +45,11 @@ class PenjualanController extends Controller
 
         return redirect()->route('user.penjualan.edit', $id)->with('success_message', 'data penjualan berhasil diedit');
     }
+
+    function destroy($id)
+    {
+        Penjualan::destroy($id);
+
+        return redirect()->route('user.penjualan.index')->with('success_message', 'data penjualan berhasil dihapus');
+    }
 }
