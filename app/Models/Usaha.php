@@ -34,14 +34,14 @@ class Usaha extends Model
     ];
 
     public $with = [
-        'kelompok',
+        // 'kelompok',
         'kategori',
     ];
 
-    function kelompok()
-    {
-        return $this->belongsTo(Kelompok::class, 'kelompok_id');
-    }
+    // function kelompok()
+    // {
+    //     return $this->belongsTo(Kelompok::class, 'kelompok_id');
+    // }
 
     function kategori()
     {
