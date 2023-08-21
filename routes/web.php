@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
     Route::get('/kewirausahaan', [User\KewirausahaanController::class, 'index'])->name('user.kewirausahaan.index');
     Route::post('/kewirausahaan', [User\KewirausahaanController::class, 'store'])->name('user.kewirausahaan.store');
     Route::get('/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index'])->name('user.pemasaran-bisnis.index');
+    Route::post('/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'store'])->name('user.pemasaran-bisnis.store');
     Route::get('/penjualan', [User\PenjualanController::class, 'index'])->name('user.penjualan.index');
     Route::get('/laporan', [User\LaporanController::class, 'index'])->name('user.laporan.index');
 

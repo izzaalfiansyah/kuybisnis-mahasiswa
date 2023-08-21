@@ -7,27 +7,27 @@
             </div>
         </div>
         @if (request()->user()->kelompok)
-            <div class="card bg-white shadow" x-data="{
-                jenis: '{{ old('jenis', $proses?->jenis) }}',
-                metode: '{{ old('metode', $proses?->metode) }}',
-                jenis_laporan: '{{ old('jenis_laporan', $proses?->jenis_laporan) }}',
-                modal_usaha: '{{ old('modal_usaha', $proses?->modal_usaha) }}',
-                jumlah_produksi: '{{ old('jumlah_produksi', $proses?->jumlah_produksi) }}',
-                medias: [{
-                    pilihan: '',
-                    ecommerce: '',
-                    nama_ecommerce: '',
-                    nama_akun: '',
-                }],
-            }">
+            <form method="POST" action="{{ route('user.pemasaran-bisnis.store') }}" class="card bg-white shadow"
+                x-data="{
+                    jenis: '{{ old('jenis', $proses?->jenis) }}',
+                    metode: `{{ old('metode', $proses?->metode) }}`,
+                    jenis_laporan: '{{ old('jenis_laporan', $proses?->jenis_laporan) }}',
+                    modal_usaha: '{{ old('modal_usaha', $proses?->modal_usaha) }}',
+                    jumlah_produksi: '{{ old('jumlah_produksi', $proses?->jumlah_produksi) }}',
+                    media: JSON.parse('{{ json_encode(old('media', $proses?->media)) }}') || [{
+                        pilihan: '',
+                        ecommerce: '',
+                        nama_ecommerce: '',
+                        nama_akun: '',
+                    }],
+                }">
                 <div class="card-body">
                     <div class="card-title mb-5">Proses Pemasaran</div>
 
                     @csrf
                     <input type="text" class="hidden" name="kelompok_id"
                         value="{{ request()->user()->kelompok?->id }}">
-
-                    <div class="form-control mb-3">
+                    <div class="form-control">
                         <label for="" class="label">Jenis Pemasaran</label>
                         <select class="input input-bordered max-w-xl" x-model="jenis" name="jenis">
                             <option value="">Pilih Jenis Pemasaran</option>
@@ -49,11 +49,11 @@
                     </div>
                     <div x-show="jenis == '2' || jenis == '3'" class="form-control">
                         <label for="" class="label">Media Online</label>
-                        <template x-for="item, index in medias">
+                        <template x-for="item, index in media">
                             <div class="form-control p-5 rounded-lg border border-gray-200 relative mb-4">
                                 <button type="button" class="absolute top-2 right-2 material-icons"
                                     x-on:click="() => {
-                                    medias = medias.filter((_, i) => i != index);
+                                    media = media.filter((_, i) => i != index);
                                 }">
                                     close
                                 </button>
@@ -61,7 +61,8 @@
                                     <div class="lg:w-1/2 px-3 w-full">
                                         <div class="form-control">
                                             <label for="" class="label">Media</label>
-                                            <select class="input input-bordered w-full" x-model="item.pilihan" required>
+                                            <select class="input input-bordered w-full" x-model="item.pilihan" required
+                                                x-bind:name="`media[${index}][pilihan]`">
                                                 <option value="">Pilih Media</option>
                                                 <option value="facebook">Facebook</option>
                                                 <option value="instagram">Instagram</option>
@@ -75,7 +76,9 @@
                                     <div class="lg:w-1/2 px-3 w-full" x-show="item.pilihan == 'ecommerce'">
                                         <div class="form-control">
                                             <label for="" class="label">Ecommerce</label>
-                                            <select class="input input-bordered" x-model="item.ecommerce" required>
+                                            <select class="input input-bordered" x-model="item.ecommerce"
+                                                x-bind:name="`media[${index}][ecommerce]`"
+                                                x-bind:required="item.pilihan == 'ecommerce'">
                                                 <option value="">Pilih Ecommerce</option>
                                                 <option value="tokopedia">Tokopedia</option>
                                                 <option value="shopee">Shopee</option>
@@ -89,14 +92,17 @@
                                         <div class="form-control">
                                             <label for="" class="label">Nama Ecommerce</label>
                                             <input type="text" class="input input-bordered"
-                                                placeholder="Nama Ecommerce" x-model="item.nama_ecommerce" required>
+                                                placeholder="Nama Ecommerce" x-model="item.nama_ecommerce"
+                                                x-bind:name="`media[${index}][nama_ecommerce]`"
+                                                x-bind:required="item.ecommerce == 'lainnya'">
                                         </div>
                                     </div>
                                     <div class="lg:w-1/2 px-3 w-full">
                                         <div class="form-control">
                                             <label for="" class="label">Nama Akun</label>
                                             <input type="text" class="input input-bordered" placeholder="Nama Akun"
-                                                x-model="item.nama_akun" required>
+                                                x-model="item.nama_akun" x-bind:name="`media[${index}][nama_akun]`"
+                                                required>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +110,7 @@
                         </template>
                         <button class="btn btn-sm btn-primary" type="button"
                             x-on:click="() => {
-                                medias = [...medias, {                        
+                                media = [...media, {                        
                                     pilihan: '',
                                     ecommerce: '',
                                     nama_ecommerce: '',
@@ -145,7 +151,7 @@
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                     </div>
                 </div>
-            </div>
+            </form>
     </div>
 @else
     <x-no-kelompok></x-no-kelompok>
