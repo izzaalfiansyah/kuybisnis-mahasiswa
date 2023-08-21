@@ -29,8 +29,8 @@ return new class extends Migration
             $table->text('foto_produk')->nullable();
             $table->timestamps();
 
-            $table->foreign('kelompok_id')->references('id')->on('kelompok');
-            $table->foreign('kategori_id')->references('id')->on('usaha_kategori');
+            $table->foreign('kelompok_id')->references('id')->on('kelompok')->onDelete('cascade');
+            $table->foreign('kategori_id')->references('id')->on('usaha_kategori')->onDelete('cascade');
         });
     }
 
