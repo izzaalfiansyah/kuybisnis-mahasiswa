@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('jenis', [1, 2, 3])->comment('1: offine, 2: online, 3: campuran');
             $table->text('metode')->nullable();
             $table->text('media')->nullable();
-            $table->enum('enum', ['harian', 'mingguan', 'bulanan']);
+            $table->enum('jenis_laporan', ['harian', 'mingguan', 'bulanan']);
             $table->integer('modal_usaha');
             $table->integer('jumlah_produksi');
             $table->timestamps();
