@@ -99,10 +99,10 @@
                                     </div>
                                     <div class="lg:w-1/2 px-3 w-full">
                                         <div class="form-control">
-                                            <label for="" class="label">Nama Akun</label>
-                                            <input type="text" class="input input-bordered" placeholder="Nama Akun"
-                                                x-model="item.nama_akun" x-bind:name="`media[${index}][nama_akun]`"
-                                                required>
+                                            <label for="" class="label">Nama Akun / Situs</label>
+                                            <input type="text" class="input input-bordered"
+                                                placeholder="Nama Akun / Situs" x-model="item.nama_akun"
+                                                x-bind:name="`media[${index}][nama_akun]`" required>
                                         </div>
                                     </div>
                                 </div>
