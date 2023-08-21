@@ -28,6 +28,11 @@ class Usaha extends Model
         'foto_produk',
     ];
 
+    public $casts = [
+        'legalitas_usaha' => 'object',
+        'foto_produk' => 'object',
+    ];
+
     public $with = [
         'kelompok',
         'kategori',
