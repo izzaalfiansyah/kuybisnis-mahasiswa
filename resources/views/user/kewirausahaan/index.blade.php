@@ -14,6 +14,9 @@
                         <label for="" class="label">Kategori Usaha</label>
                         <select class="input input-bordered max-w-xl">
                             <option value="">Pilih Kategori Usaha</option>
+                            @foreach ($kategori as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-control mb-3">
