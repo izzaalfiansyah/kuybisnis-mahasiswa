@@ -12,7 +12,7 @@ class PenjualanController extends Controller
 {
     function index()
     {
-        $penjualan = Penjualan::where('kelompok_id', Auth::user()->kelompok?->id)->get();
+        $penjualan = Penjualan::where('kelompok_id', Auth::user()->kelompok?->id)->orderBy('created_at', 'desc')->get();
 
         return view('user.penjualan.index', compact('penjualan'));
     }
@@ -35,5 +35,14 @@ class PenjualanController extends Controller
     {
         $penjualan = Penjualan::find($id);
         return view('user.penjualan.edit', compact('penjualan'));
+    }
+
+    function update(PenjualanRequest $req, $id)
+    {
+        $data = $req->validated();
+
+        Penjualan::find($id)->update($data);
+
+        return redirect()->route('user.penjualan.edit', $id)->with('success_message', 'data penjualan berhasil diedit');
     }
 }

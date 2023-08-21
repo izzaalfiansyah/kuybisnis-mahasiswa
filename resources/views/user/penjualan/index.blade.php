@@ -25,9 +25,10 @@
                                     <td><x-format-money :value="$item->total_biaya"></x-format-money></td>
                                     <td><x-format-money :value="$item->nilai_keuntungan_bersih"></x-format-money></td>
                                     <td>
-                                        <a href="" class="btn btn-primary btn-sm"><i
+                                        <a href="{{ route('user.penjualan.edit', $item->id) }}"
+                                            class="btn btn-primary btn-sm"><i
                                                 class="material-icons text-base">edit</i></a>
-                                        <a href="" class="btn btn-warning bg-red-500 text-white btn-sm"><i
+                                        <a href="#" class="btn btn-warning bg-red-500 text-white btn-sm"><i
                                                 class="material-icons text-base">delete</i></a>
                                     </td>
                                 </tr>

@@ -1,5 +1,6 @@
 <x-app-layout title="Penjualan / Tambah">
-    <form method="post" action="{{ route('user.penjualan.store') }}" class="card bg-white shadow">
+    <form method="post" action="{{ route('user.penjualan.update', $penjualan->id) }}" class="card bg-white shadow">
+        @method('PUT')
         @csrf
 
         <input type="text" class="hidden" name="kelompok_id" value="{{ request()->user()->kelompok->id }}">
@@ -7,14 +8,14 @@
         <div class="card-body">
             <div class="card-title">Tambah Penjualan</div>
             <div x-data="{
-                penjualanBersih: '{{ old('penjualan_bersih', '0') }}',
-                hargaJualProduk: '{{ old('harga_jual_produk', '0') }}',
+                penjualanBersih: '{{ old('penjualan_bersih', $penjualan->penjualan_bersih) }}',
+                hargaJualProduk: '{{ old('harga_jual_produk', $penjualan->harga_jual_produk) }}',
                 biaya: {
-                    tetap: '{{ old('biaya_tetap', '0') }}',
-                    variabel: '{{ old('biaya_variabel', '0') }}',
-                    operasional: '{{ old('biaya_operasional', '0') }}',
-                    nonOperasional: '{{ old('biaya_non_operasional', '0') }}',
-                    pajak: '{{ old('biaya_pajak', '0') }}',
+                    tetap: '{{ old('biaya_tetap', $penjualan->biaya_tetap) }}',
+                    variabel: '{{ old('biaya_variabel', $penjualan->biaya_variabel) }}',
+                    operasional: '{{ old('biaya_operasional', $penjualan->biaya_operasional) }}',
+                    nonOperasional: '{{ old('biaya_non_operasional', $penjualan->biaya_non_operasional) }}',
+                    pajak: '{{ old('biaya_pajak', $penjualan->biaya_pajak) }}',
                 },
                 totalBiaya() {
                     return parseInt(this.biaya.tetap) + parseInt(this.biaya.variabel) + parseInt(this.biaya.operasional) + parseInt(this.biaya.nonOperasional) + parseInt(this.biaya.pajak);
@@ -102,7 +103,7 @@
                 </div>
             </div>
             <div class="mt-5 space-x-4">
-                <button type="submit" class="btn btn-primary">Tambah Penjualan</button>
+                <button type="submit" class="btn btn-primary">Ubah Penjualan</button>
                 <a href="{{ route('user.penjualan.index') }}" class="btn">Kembali</a>
             </div>
         </div>
