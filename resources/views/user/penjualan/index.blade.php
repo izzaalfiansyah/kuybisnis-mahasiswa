@@ -24,15 +24,15 @@
             }">
                 <div class="form-control">
                     <label for="" class="label">Total Penjualan Bersih</label>
-                    <input type="number" min="0" class="input input-bordered max-w-xl"
-                        placeholder="Total Penjualan Bersih" x-model="totalPenjualan">
+                    <input type="number" min="0" class="input input-bordered" placeholder="Total Penjualan Bersih"
+                        x-model="totalPenjualan">
                 </div>
                 <div class="form-control">
                     <label for="" class="label">Harga Jual Produk</label>
-                    <input type="number" min="0" class="input input-bordered max-w-xl"
-                        placeholder="Harga Jual Produk" x-model="hargaJual">
+                    <input type="number" min="0" class="input input-bordered" placeholder="Harga Jual Produk"
+                        x-model="hargaJual">
                 </div>
-                <div class="grid lg:grid-cols-3 grid-cols-1 gap-x-3">
+                <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-3">
                     <div class="form-control">
                         <label for="" class="label">Biaya Tetap</label>
                         <input type="number" min="0" class="input input-bordered max-w-xl"
