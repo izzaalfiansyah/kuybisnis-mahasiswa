@@ -12,7 +12,7 @@ class PenjualanController extends Controller
 {
     function index()
     {
-        $penjualan = Penjualan::where('kelompok_id', Auth::user()->kelompok?->id)->orderBy('created_at', 'desc')->get();
+        $penjualan = Penjualan::where('kelompok_id', Auth::user()->kelompok?->id)->orderBy('created_at', 'desc')->paginate(20);
 
         return view('user.penjualan.index', compact('penjualan'));
     }

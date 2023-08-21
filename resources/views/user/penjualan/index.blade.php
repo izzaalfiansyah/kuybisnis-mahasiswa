@@ -47,6 +47,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-5">
+                    {{ $penjualan->links() }}
+                </div>
             </div>
 
             <x-dialog id="deletePenjualan" header="Hapus Penjualan">
