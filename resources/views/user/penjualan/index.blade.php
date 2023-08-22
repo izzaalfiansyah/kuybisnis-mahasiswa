@@ -13,6 +13,7 @@
                         <thead>
                             <tr>
                                 <th>Tanggal</th>
+                                <th>Jam</th>
                                 <th>Total Penjualan</th>
                                 <th>Total Biaya</th>
                                 <th>Nilai Keuntungan</th>
@@ -23,6 +24,7 @@
                             @forelse ($penjualan as $item)
                                 <tr>
                                     <td><x-format-date :value="$item->created_at"></x-format-date></td>
+                                    <td>{{ date('H:i', strtotime($item->created_at)) }}</td>
                                     <td><x-format-money :value="$item->total_penjualan_bersih"></x-format-money></td>
                                     <td><x-format-money :value="$item->total_biaya"></x-format-money></td>
                                     <td><x-format-money :value="$item->nilai_keuntungan_bersih"></x-format-money></td>
@@ -41,7 +43,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-center">Penjualan belum tersedia.</td>
+                                    <td colspan="6" class="text-center">Penjualan belum tersedia.</td>
                                 </tr>
                             @endforelse
                         </tbody>

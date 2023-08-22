@@ -48,10 +48,22 @@ class LaporanController extends Controller
         ];
 
         if ($proses->jenis_laporan == 'harian') {
-            $data_penjualan = Penjualan::where('kelompok_id', Auth::user()->kelompok?->id)->orderBy('created_at', 'desc')->simplePaginate(7);
+            $data_penjualan = Penjualan::select(
+                DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
+                DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
+                DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
+                DB::raw('cast(sum(biaya_variabel) as unsigned) as biaya_variabel'),
+                DB::raw('cast(sum(biaya_operasional) as unsigned) as biaya_operasional'),
+                DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
+                DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
+                DB::raw('date_format(created_at, "%Y-%m-%d") as tanggal')
+            )->where('kelompok_id', Auth::user()->kelompok?->id)
+                ->orderBy('tanggal', 'desc')
+                ->groupBy('tanggal')
+                ->simplePaginate(7);
 
             foreach ($data_penjualan as $item) {
-                $labels[] = formatDate($item->created_at);
+                $labels[] = formatDate($item->tanggal);
                 $penjualan[] = $item->penjualan_bersih;
                 $total_penjualan[] = $item->total_penjualan_bersih;
                 $total_biaya[] = $item->total_biaya;
