@@ -25,10 +25,31 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(f
     Route::resource('/usaha-kategori', Admin\UsahaKategoriController::class, [
         'as' => 'admin'
     ]);
+    Route::resource('/user', Admin\UsahaKategoriController::class, [
+        'as' => 'admin'
+    ]);
+    Route::resource('/kelompok', Admin\UsahaKategoriController::class, [
+        'as' => 'admin',
+    ]);
+    Route::get('/kelompok/anggota', [User\KelompokAnggotaController::class, 'index'])->name('admin.kelompok.anggota.index');
+    Route::post('/kelompok/anggota', [User\KelompokAnggotaController::class, 'store'])->name('admin.kelompok.anggota.store');
+    Route::delete('/kelompok/anggota/{id}', [User\KelompokAnggotaController::class, 'destroy'])->name('admin.kelompok.anggota.destroy');
+    Route::get('/kelompok/kewirausahaan', [User\KewirausahaanController::class, 'index'])->name('admin.kelompok.kewirausahaan.index');
+    Route::post('/kelompok/kewirausahaan', [User\KewirausahaanController::class, 'store'])->name('admin.kelompok.kewirausahaan.store');
+    Route::get('/kelompok/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index'])->name('admin.kelompok.pemasaran-bisnis.index');
+    Route::post('/kelompok/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'store'])->name('admin.kelompok.pemasaran-bisnis.store');
+    Route::resource('/kelompok/penjualan', User\PenjualanController::class, [
+        'as' => 'admin',
+    ]);
+    Route::get('/pengaturan', [Admin\UsahaKategoriController::class, 'index'])->name('admin.pengaturan.index');
+    Route::post('/pengaturan', [Admin\UsahaKategoriController::class, 'store'])->name('admin.pengaturan.store');
 });
 
 Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
     Route::get('/dashboard', [User\BerandaController::class, 'index'])->name('user.dashboard.index');
+    Route::post('/kelompok', [User\KelompokController::class, 'store'])->name('user.kelompok.store');
+    Route::post('/kelompok/anggota', [User\KelompokAnggotaController::class, 'store'])->name('user.kelompok.anggota.store');
+    Route::delete('/kelompok/anggota/{id}', [User\KelompokAnggotaController::class, 'destroy'])->name('user.kelompok.anggota.destroy');
     Route::get('/kewirausahaan', [User\KewirausahaanController::class, 'index'])->name('user.kewirausahaan.index');
     Route::post('/kewirausahaan', [User\KewirausahaanController::class, 'store'])->name('user.kewirausahaan.store');
     Route::get('/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index'])->name('user.pemasaran-bisnis.index');
@@ -37,10 +58,6 @@ Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
         'as' => 'user',
     ]);
     Route::get('/laporan', [User\LaporanController::class, 'index'])->name('user.laporan.index');
-
-    Route::post('/kelompok', [User\KelompokController::class, 'store'])->name('user.kelompok.store');
-    Route::post('/kelompok/anggota', [User\KelompokAnggotaController::class, 'store'])->name('user.kelompok.anggota.store');
-    Route::delete('/kelompok/anggota/{id}', [User\KelompokAnggotaController::class, 'destroy'])->name('user.kelompok.anggota.destroy');
 });
 
 Route::middleware('auth')->group(function () {

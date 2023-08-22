@@ -78,7 +78,7 @@ class LaporanController extends Controller
                 DB::raw('cast(sum(biaya_operasional) as unsigned) as biaya_operasional'),
                 DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
                 DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
-                DB::raw('date_format(created_at, "Pekan ke-%V, %Y") as pekan')
+                DB::raw('date_format(created_at, "Pekan %V - %Y") as pekan')
             )->where('kelompok_id', Auth::user()->kelompok?->id)
                 ->orderBy('pekan', 'desc')
                 ->groupBy('pekan')

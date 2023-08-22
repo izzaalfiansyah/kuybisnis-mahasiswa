@@ -60,6 +60,21 @@
                                 'icon' => 'sync_alt',
                             ],
                             [
+                                'route' => 'admin.user.index',
+                                'title' => 'Pengguna',
+                                'icon' => 'people',
+                            ],
+                            [
+                                'route' => 'admin.kelompok.index',
+                                'title' => 'Kelompok',
+                                'icon' => 'switch_account',
+                            ],
+                            [
+                                'route' => 'admin.pengaturan.index',
+                                'title' => 'Pengaturan',
+                                'icon' => 'settings',
+                            ],
+                            [
                                 'route' => 'profile.edit',
                                 'title' => 'Akun',
                                 'icon' => 'person',
