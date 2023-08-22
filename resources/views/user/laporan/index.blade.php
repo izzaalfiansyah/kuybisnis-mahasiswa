@@ -1,6 +1,22 @@
 <x-app-layout title="Laporan">
     @if (request()->user()->kelompok)
         <div class="space-y-5">
+            @php
+                $nextLink = $data_penjualan->toArray()['next_page_url'];
+                $prevLink = $data_penjualan->toArray()['prev_page_url'];
+            @endphp
+
+            <div class="card bg-white shadow">
+                <div class="p-4">
+                    <div class="flex items-center justify-center space-x-4">
+                        <a href="{{ $nextLink }}" {{ !$nextLink ? 'disabled' : '' }}
+                            class="btn btn-primary text-xl">&laquo;</a>
+                        <a href="{{ $prevLink }}" {{ !$prevLink ? 'disabled' : '' }}
+                            class="btn btn-primary text-xl">&raquo;</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="card bg-white shadow">
                 <div class="card-body">
                     <div class="card-title">
@@ -15,6 +31,17 @@
                         Grafik Nilai Keuntungan
                     </div>
                     <canvas id="grafikNilaiKeuntungan"></canvas>
+                </div>
+            </div>
+
+            <div class="card bg-white shadow">
+                <div class="p-4">
+                    <div class="flex items-center justify-center space-x-4">
+                        <a href="{{ $nextLink }}" {{ !$nextLink ? 'disabled' : '' }}
+                            class="btn btn-primary text-xl">&laquo;</a>
+                        <a href="{{ $prevLink }}" {{ !$prevLink ? 'disabled' : '' }}
+                            class="btn btn-primary text-xl">&raquo;</a>
+                    </div>
                 </div>
             </div>
             @php

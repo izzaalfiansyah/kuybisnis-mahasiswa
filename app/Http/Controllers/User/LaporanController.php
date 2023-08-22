@@ -48,25 +48,19 @@ class LaporanController extends Controller
         ];
 
         if ($proses->jenis_laporan == 'harian') {
-            $data_penjualan = Penjualan::where('kelompok_id', Auth::user()->kelompok?->id)->orderBy('created_at', 'desc')->paginate(7);
+            $data_penjualan = Penjualan::where('kelompok_id', Auth::user()->kelompok?->id)->orderBy('created_at', 'desc')->simplePaginate(7);
 
             foreach ($data_penjualan as $item) {
                 $labels[] = formatDate($item->created_at);
-                $penjualan[] = $item->penjualan_bersih * $item->harga_jual_produk;
+                $penjualan[] = $item->penjualan_bersih;
                 $total_penjualan[] = $item->total_penjualan_bersih;
                 $total_biaya[] = $item->total_biaya;
                 $nilai_keuntungan[] = $item->nilai_keuntungan_bersih;
             }
-
-            $grafik['labels'] = json_encode($labels);
-            $grafik['penjualan'] = json_encode($penjualan);
-            $grafik['total_penjualan'] = json_encode($total_penjualan);
-            $grafik['total_biaya'] = json_encode($total_biaya);
-            $grafik['nilai_keuntungan'] = json_encode($nilai_keuntungan);
         } else if ($proses->jenis_laporan == 'mingguan') {
             $data_penjualan = Penjualan::select(
                 DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
-                DB::raw('cast(sum(harga_jual_produk) as unsigned) as harga_jual_produk'),
+                DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
                 DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
                 DB::raw('cast(sum(biaya_variabel) as unsigned) as biaya_variabel'),
                 DB::raw('cast(sum(biaya_operasional) as unsigned) as biaya_operasional'),
@@ -76,26 +70,20 @@ class LaporanController extends Controller
             )->where('kelompok_id', Auth::user()->kelompok?->id)
                 ->orderBy('pekan', 'desc')
                 ->groupBy('pekan')
-                ->paginate(5);
+                ->simplePaginate(5);
 
 
             foreach ($data_penjualan as $item) {
                 $labels[] = $item->pekan;
-                $penjualan[] = $item->penjualan_bersih * $item->harga_jual_produk;
+                $penjualan[] = $item->penjualan_bersih;
                 $total_penjualan[] = $item->total_penjualan_bersih;
                 $total_biaya[] = $item->total_biaya;
                 $nilai_keuntungan[] = $item->nilai_keuntungan_bersih;
             }
-
-            $grafik['labels'] = json_encode($labels);
-            $grafik['penjualan'] = json_encode($penjualan);
-            $grafik['total_penjualan'] = json_encode($total_penjualan);
-            $grafik['total_biaya'] = json_encode($total_biaya);
-            $grafik['nilai_keuntungan'] = json_encode($nilai_keuntungan);
         } else {
             $data_penjualan = $data_penjualan = Penjualan::select(
                 DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
-                DB::raw('cast(sum(harga_jual_produk) as unsigned) as harga_jual_produk'),
+                DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
                 DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
                 DB::raw('cast(sum(biaya_variabel) as unsigned) as biaya_variabel'),
                 DB::raw('cast(sum(biaya_operasional) as unsigned) as biaya_operasional'),
@@ -105,23 +93,23 @@ class LaporanController extends Controller
             )->where('kelompok_id', Auth::user()->kelompok?->id)
                 ->orderBy('bulan', 'desc')
                 ->groupBy('bulan')
-                ->paginate(6);
+                ->simplePaginate(6);
 
             foreach ($data_penjualan as $item) {
                 $labels[] = substr(formatDate($item->bulan), 3);
-                $penjualan[] = $item->penjualan_bersih * $item->harga_jual_produk;
+                $penjualan[] = $item->penjualan_bersih;
                 $total_penjualan[] = $item->total_penjualan_bersih;
                 $total_biaya[] = $item->total_biaya;
                 $nilai_keuntungan[] = $item->nilai_keuntungan_bersih;
             }
-
-            $grafik['labels'] = json_encode($labels);
-            $grafik['penjualan'] = json_encode($penjualan);
-            $grafik['total_penjualan'] = json_encode($total_penjualan);
-            $grafik['total_biaya'] = json_encode($total_biaya);
-            $grafik['nilai_keuntungan'] = json_encode($nilai_keuntungan);
         }
 
-        return view('user.laporan.index', compact('grafik', 'hasil'));
+        $grafik['labels'] = json_encode($labels);
+        $grafik['penjualan'] = json_encode($penjualan);
+        $grafik['total_penjualan'] = json_encode($total_penjualan);
+        $grafik['total_biaya'] = json_encode($total_biaya);
+        $grafik['nilai_keuntungan'] = json_encode($nilai_keuntungan);
+
+        return view('user.laporan.index', compact('grafik', 'hasil', 'data_penjualan'));
     }
 }
