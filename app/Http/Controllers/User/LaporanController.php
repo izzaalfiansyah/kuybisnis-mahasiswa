@@ -14,7 +14,10 @@ class LaporanController extends Controller
     function index()
     {
         $proses = ProsesPemasaran::where('kelompok_id', Auth::user()->kelompok?->id)->first();
-        $total = DB::table('penjualan')->selectRaw('sum(biaya_tetap + biaya_variabel + biaya_operasional + biaya_non_operasional + biaya_pajak) as total_biaya, sum(harga_jual_produk * penjualan_bersih) as total_penjualan')->where('kelompok_id', Auth::user()->kelompok?->id)->first();
+        $total = DB::table('penjualan')->select(
+            DB::raw('sum(biaya_tetap + biaya_variabel + biaya_operasional + biaya_non_operasional + biaya_pajak) as total_biaya'),
+            DB::raw('sum(harga_jual_produk * penjualan_bersih) as total_penjualan')
+        )->where('kelompok_id', Auth::user()->kelompok?->id)->first();
 
         $grafik = [
             'labels' => json_encode([]),
@@ -49,6 +52,34 @@ class LaporanController extends Controller
 
             foreach ($data_penjualan as $item) {
                 $labels[] = formatDate($item->created_at);
+                $penjualan[] = $item->penjualan_bersih;
+                $total_penjualan[] = $item->total_penjualan_bersih;
+                $total_biaya[] = $item->total_biaya;
+                $nilai_keuntungan[] = $item->nilai_keuntungan_bersih;
+            }
+
+            $grafik['labels'] = json_encode($labels);
+            $grafik['penjualan'] = json_encode($penjualan);
+            $grafik['total_penjualan'] = json_encode($total_penjualan);
+            $grafik['total_biaya'] = json_encode($total_biaya);
+            $grafik['nilai_keuntungan'] = json_encode($nilai_keuntungan);
+        } else if ($proses->jenis_laporan == 'mingguan') {
+            $data_penjualan = Penjualan::select(
+                DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
+                DB::raw('cast(sum(harga_jual_produk) as unsigned) as harga_jual_produk'),
+                DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
+                DB::raw('cast(sum(biaya_variabel) as unsigned) as biaya_variabel'),
+                DB::raw('cast(sum(biaya_operasional) as unsigned) as biaya_operasional'),
+                DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
+                DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
+                DB::raw('date_format(created_at, "Pekan ke-%V, %Y") as pekan')
+            )->where('kelompok_id', Auth::user()->kelompok?->id)
+                ->groupBy(DB::raw('date_format(created_at, "Pekan ke-%V, %Y")'))
+                ->paginate(5);
+
+
+            foreach ($data_penjualan as $item) {
+                $labels[] = $item->pekan;
                 $penjualan[] = $item->penjualan_bersih;
                 $total_penjualan[] = $item->total_penjualan_bersih;
                 $total_biaya[] = $item->total_biaya;
