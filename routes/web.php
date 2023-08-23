@@ -28,7 +28,7 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(f
     Route::resource('/user', Admin\UserController::class, [
         'as' => 'admin'
     ]);
-    Route::resource('/kelompok', Admin\UsahaKategoriController::class, [
+    Route::resource('/kelompok', Admin\KelompokController::class, [
         'as' => 'admin',
     ]);
     Route::get('/kelompok/anggota', [User\KelompokAnggotaController::class, 'index'])->name('admin.kelompok.anggota.index');

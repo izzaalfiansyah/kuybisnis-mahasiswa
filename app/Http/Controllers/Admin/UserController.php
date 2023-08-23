@@ -60,4 +60,11 @@ class UserController extends Controller
 
         return redirect()->route('admin.user.edit', $id)->with('success_message', 'data pengguna berhasil disimpan');
     }
+
+    function destroy($id)
+    {
+        User::destroy($id);
+
+        return redirect()->route('admin.user.index')->with('success_message', 'data pengguna berhasil dihapus');
+    }
 }
