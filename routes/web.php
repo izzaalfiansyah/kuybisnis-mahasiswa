@@ -31,9 +31,8 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(f
     Route::resource('/kelompok', Admin\KelompokController::class, [
         'as' => 'admin',
     ]);
-    Route::get('/kelompok/anggota', [User\KelompokAnggotaController::class, 'index'])->name('admin.kelompok.anggota.index');
-    Route::post('/kelompok/anggota', [User\KelompokAnggotaController::class, 'store'])->name('admin.kelompok.anggota.store');
-    Route::delete('/kelompok/anggota/{id}', [User\KelompokAnggotaController::class, 'destroy'])->name('admin.kelompok.anggota.destroy');
+    Route::post('/kelompok/anggota', [Admin\KelompokAnggotaController::class, 'store'])->name('admin.kelompok.anggota.store');
+    Route::delete('/kelompok/anggota/{id}', [Admin\KelompokAnggotaController::class, 'destroy'])->name('admin.kelompok.anggota.destroy');
     Route::get('/kelompok/kewirausahaan', [User\KewirausahaanController::class, 'index'])->name('admin.kelompok.kewirausahaan.index');
     Route::post('/kelompok/kewirausahaan', [User\KewirausahaanController::class, 'store'])->name('admin.kelompok.kewirausahaan.store');
     Route::get('/kelompok/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index'])->name('admin.kelompok.pemasaran-bisnis.index');
