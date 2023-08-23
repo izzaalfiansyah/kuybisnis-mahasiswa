@@ -37,7 +37,8 @@
                                 </td>
                                 <td>{{ $item->asal_universitas }}</td>
                                 <td>
-                                    <a href="{{ route('admin.kelompok.show', $item->id) }}" class="btn btn-sm btn-info">
+                                    <a href="{{ route('admin.kelompok.show', $item->id) }}"
+                                        class="btn btn-sm btn-primary">
                                         <i class="material-icons text-base">search</i>
                                     </a>
                                     {{-- <a href="{{ route('admin.kelompok.edit', $item->id) }}"
