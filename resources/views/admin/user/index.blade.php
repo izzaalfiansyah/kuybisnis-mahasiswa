@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($user as $item)
+                        @forelse ($user as $item)
                             <tr>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->name }}</td>
@@ -46,7 +46,11 @@
                                     </button>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center">data user belum ada</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

@@ -18,4 +18,13 @@ class Kelompok extends Model
         'ketua_nama',
         'ketua_nim',
     ];
+
+    public $with = [
+        'user'
+    ];
+
+    function user()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
 }
