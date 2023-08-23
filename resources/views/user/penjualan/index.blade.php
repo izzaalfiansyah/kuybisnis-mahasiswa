@@ -9,7 +9,7 @@
                     <a href="{{ route('user.penjualan.create') }}" class="btn btn-primary">Tambah</a>
                 </div>
                 <div class="overflow-x-auto mt-5">
-                    <table class="table">
+                    <table class="table table-lg">
                         <thead>
                             <tr>
                                 <th>Tanggal</th>

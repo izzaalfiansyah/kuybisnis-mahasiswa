@@ -20,7 +20,7 @@
                 </div>
                 <div class="mt-5">
                     <div class="overflow-x-auto">
-                        <table class="table">
+                        <table class="table table-lg">
                             <thead>
                                 <tr>
                                     <th>Nama Kategori</th>

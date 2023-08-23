@@ -9,7 +9,7 @@
             </div>
 
             <div class="overflow-x-auto mt-5">
-                <table class="table">
+                <table class="table table-lg">
                     <thead>
                         <tr>
                             <th>Email</th>
