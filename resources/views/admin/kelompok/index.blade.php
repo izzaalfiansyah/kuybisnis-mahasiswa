@@ -8,7 +8,7 @@
                 <div class="card-title">
                     Data Kelompok
                 </div>
-                <a href="{{ route('admin.kelompok.create') }}" class="btn btn-primary">Tambah</a>
+                {{-- <a href="{{ route('admin.kelompok.create') }}" class="btn btn-primary">Tambah</a> --}}
             </div>
 
             <div class="mt-5 overflow-x-auto">
@@ -17,6 +17,7 @@
                         <tr>
                             <th>Nama Kelompok</th>
                             <th>Pembuat</th>
+                            <th>Ketua</th>
                             <th>Asal Universitas</th>
                             <th>Opsi</th>
                         </tr>
@@ -25,11 +26,21 @@
                         @foreach ($kelompok as $item)
                             <tr>
                                 <td>{{ $item->nama }}</td>
-                                <td>{{ $item->user->name }}</td>
+                                <td>
+                                    <a href="{{ route('admin.user.edit', $item->user->id) }}" class="link">
+                                        {{ $item->user->name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <div>{{ $item->ketua_nama }}</div>
+                                    <div class="text-xs">{{ $item->ketua_nim }}</div>
+                                </td>
                                 <td>{{ $item->asal_universitas }}</td>
                                 <td>
-
-                                    <a href="{{ route('admin.kelompok.edit', $item->id) }}"
+                                    <a href="{{ route('admin.kelompok.show', $item->id) }}" class="btn btn-sm btn-info">
+                                        <i class="material-icons text-base">search</i>
+                                    </a>
+                                    {{-- <a href="{{ route('admin.kelompok.edit', $item->id) }}"
                                         class="btn btn-sm btn-primary">
                                         <i class="material-icons text-base">edit</i>
                                     </a>
@@ -40,7 +51,7 @@
                                     deleteModal.showModal();
                                 }">
                                         <i class="material-icons text-base">delete</i>
-                                    </button>
+                                    </button> --}}
                                 </td>
                             </tr>
                         @endforeach
