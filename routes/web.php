@@ -25,7 +25,7 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(f
     Route::resource('/usaha-kategori', Admin\UsahaKategoriController::class, [
         'as' => 'admin'
     ]);
-    Route::resource('/user', Admin\UsahaKategoriController::class, [
+    Route::resource('/user', Admin\UserController::class, [
         'as' => 'admin'
     ]);
     Route::resource('/kelompok', Admin\UsahaKategoriController::class, [
