@@ -15,6 +15,7 @@
                             <th>Email</th>
                             <th>Nama Pengguna</th>
                             <th>Role</th>
+                            <th>Status</th>
                             <th>Opsi</th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                                     <span
                                         class="px-3 p-1 {{ $item->role == '1' ? 'bg-green-200 text-green-500' : 'text-red-500 bg-red-200' }} rounded">{{ $item->role == '1' ? 'admin' : 'mahasiswa' }}</span>
                                 </td>
+                                <td>{{ $item->email_verified_at ? 'Terverifikasi' : 'Belum Verifikasi' }}</td>
                                 <td>
                                     <a href="{{ route('admin.user.edit', $item->id) }}" class="btn btn-sm btn-primary">
                                         <i class="material-icons text-base">edit</i>
