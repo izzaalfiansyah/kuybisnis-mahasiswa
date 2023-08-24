@@ -27,8 +27,8 @@
                         dalam hal bisnis
                     </p>
                     <div class="button">
-                        <a href="https://www.youtube.com/watch?v=owhuBrGIOsE"
-                            class="relative popup-youtube video-btn"><i class="fas fa-play"></i>Lihat Video</a>
+                        <a href="{{ $app_pengaturan->link_video_homepage }}" class="relative popup-youtube video-btn"><i
+                                class="fas fa-play"></i>Lihat Video</a>
                     </div>
                 </div>
 
