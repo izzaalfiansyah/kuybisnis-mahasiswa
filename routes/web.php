@@ -40,8 +40,8 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(f
     Route::resource('/kelompok/penjualan', User\PenjualanController::class, [
         'as' => 'admin',
     ]);
-    Route::get('/pengaturan', [Admin\UsahaKategoriController::class, 'index'])->name('admin.pengaturan.index');
-    Route::post('/pengaturan', [Admin\UsahaKategoriController::class, 'store'])->name('admin.pengaturan.store');
+    Route::get('/pengaturan', [Admin\PengaturanController::class, 'index'])->name('admin.pengaturan.index');
+    Route::post('/pengaturan', [Admin\PengaturanController::class, 'store'])->name('admin.pengaturan.store');
 });
 
 Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
