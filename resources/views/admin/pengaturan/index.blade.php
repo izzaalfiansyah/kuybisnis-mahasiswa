@@ -1,5 +1,6 @@
 <x-app-layout title="Pengaturan">
-    <div class="card bg-white shadow">
+    <form method="POST" action="{{ route('admin.pengaturan.store') }}" class="card bg-white shadow">
+        @csrf
         <div class="card-body">
             <div class="card-title mb-5">Pengaturan</div>
 
@@ -47,5 +48,5 @@
                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
             </div>
         </div>
-    </div>
+    </form>
 </x-app-layout>
