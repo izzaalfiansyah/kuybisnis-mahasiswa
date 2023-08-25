@@ -141,6 +141,7 @@
                     <div class="mt-10">
                         <button class="btn btn-primary" type="submit">Simpan Perubahan</button>
                     </div>
+                </form>
             </div>
     </div>
 @else
