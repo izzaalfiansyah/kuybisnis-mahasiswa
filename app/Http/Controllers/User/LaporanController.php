@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
-    function index()
+    function index($id = null)
     {
-        $proses = ProsesPemasaran::where('kelompok_id', Auth::user()->kelompok?->id)->first();
+        $kelompokId = $id ?: Auth::user()->kelompok?->id;
+
+        $proses = ProsesPemasaran::where('kelompok_id', $kelompokId)->first();
         $total = DB::table('penjualan')->select(
             DB::raw('sum(biaya_tetap + biaya_variabel + biaya_operasional + biaya_non_operasional + biaya_pajak) as total_biaya'),
             DB::raw('sum(harga_jual_produk * penjualan_bersih) as total_penjualan')
-        )->where('kelompok_id', Auth::user()->kelompok?->id)->first();
+        )->where('kelompok_id', $kelompokId)->first();
 
         $data_penjualan = null;
         $hasil = null;
@@ -62,7 +64,7 @@ class LaporanController extends Controller
                     DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
                     DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
                     DB::raw('date_format(created_at, "%Y-%m-%d") as tanggal')
-                )->where('kelompok_id', Auth::user()->kelompok?->id)
+                )->where('kelompok_id', $kelompokId)
                     ->orderBy('tanggal', 'desc')
                     ->groupBy('tanggal')
                     ->simplePaginate(7);
@@ -84,7 +86,7 @@ class LaporanController extends Controller
                     DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
                     DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
                     DB::raw('date_format(created_at, "Pekan %V - %Y") as pekan')
-                )->where('kelompok_id', Auth::user()->kelompok?->id)
+                )->where('kelompok_id', $kelompokId)
                     ->orderBy('pekan', 'desc')
                     ->groupBy('pekan')
                     ->simplePaginate(5);
@@ -107,7 +109,7 @@ class LaporanController extends Controller
                     DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
                     DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
                     DB::raw('date_format(created_at, "%Y-%m") as bulan')
-                )->where('kelompok_id', Auth::user()->kelompok?->id)
+                )->where('kelompok_id', $kelompokId)
                     ->orderBy('bulan', 'desc')
                     ->groupBy('bulan')
                     ->simplePaginate(6);
@@ -128,6 +130,16 @@ class LaporanController extends Controller
             $grafik['nilai_keuntungan'] = json_encode($nilai_keuntungan);
         }
 
-        return view('user.laporan.index', compact('grafik', 'hasil', 'data_penjualan'));
+        $data = [
+            'grafik' => $grafik,
+            'hasil' => $hasil,
+            'data_penjualan' => $data_penjualan,
+        ];
+
+        if ($id) {
+            return $data;
+        }
+
+        return view('user.laporan.index', $data);
     }
 }

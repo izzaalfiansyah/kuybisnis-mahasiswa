@@ -31,6 +31,17 @@
             </div>
         </div>
 
-        @include('admin.kelompok.partials.anggota')
+        <div class="card card-body bg-white shadow">
+            <div class="tabs">
+                <a class="tab tab-lg tab-bordered tab-active">Daftar Anggota</a>
+                <a class="tab tab-lg tab-bordered">Pengembangan Bisnis</a>
+                <a class="tab tab-lg tab-bordered">Cara Pemasaran</a>
+                <a class="tab tab-lg tab-bordered">Hasil Kegiatan</a>
+            </div>
+
+            <div class="mt-10">
+                @include('admin.kelompok.partials.anggota')
+            </div>
+        </div>
     </div>
 </x-app-layout>

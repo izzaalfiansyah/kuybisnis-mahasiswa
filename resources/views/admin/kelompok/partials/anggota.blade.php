@@ -1,12 +1,12 @@
-<div class="card bg-white shadow" x-data="{
+<div x-data="{
     nama: '',
     nim: '',
     id: '',
     destroyFormUrl: '',
 }">
-    <div class="card-body">
+    <div>
         <div class="flex justify-between items-center">
-            <div class="card-title">Anggota Kelompok</div>
+            {{-- <div class="card-title">Anggota Kelompok</div> --}}
             <button class="btn btn-primary {{ $kelompok->id ?: 'hidden' }}" type="button"
                 x-on:click="() => {
               id = '';
