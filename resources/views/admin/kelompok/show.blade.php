@@ -55,6 +55,9 @@
                 <div x-show="selected == 3">
                     @include('admin.kelompok.partials.pemasaran')
                 </div>
+                <div x-show="selected == 4">
+                    @include('admin.kelompok.partials.laporan')
+                </div>
             </div>
         </div>
     </div>
