@@ -3,7 +3,7 @@
         <div class="card bg-white shadow">
             <div class="card-body">
                 <div class="card-title mb-5">Video Motivasi</div>
-                <iframe src="{{ $app_pengaturan->link_video_bisnis_plan }}" class="w-full h-80 rounded-lg">
+                <iframe src="{{ $app_pengaturan?->link_video_bisnis_plan }}" class="w-full h-80 rounded-lg">
                 </iframe>
             </div>
         </div>
