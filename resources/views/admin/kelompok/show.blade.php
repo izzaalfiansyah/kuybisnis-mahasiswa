@@ -12,8 +12,8 @@
                         <div class="text-xl font-semibold">{{ $kelompok->asal_universitas }}</div>
                     </div>
                 </div>
-                <div class="mt-5">
-                    <div class="flex lg:flex-row flex-col gap-x-3 items-center justify-between mt-5">
+                <div>
+                    <div class="flex lg:flex-row flex-col gap-x-3 items-center justify-between">
                         <div class="lg:flex-1 w-full mb-5">
                             <div class="pb-5 border-b">
                                 <div class="mb-3">Nama Ketua</div>
