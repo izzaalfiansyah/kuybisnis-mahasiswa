@@ -1,12 +1,12 @@
 <div class="mb-4 pb-4 border-b">
     <div class="mb-2 font-semibold">Kategori Usaha</div>
-    <div class="text-xl">
+    <div class="mt-3">
         {{ $kelompok_usaha->kategori->nama }}
     </div>
 </div>
 <div class="mb-4 pb-4 border-b">
     <div class="mb-2 font-semibold">Nama Produk</div>
-    <div class="text-xl">
+    <div class="mt-3">
         {{ $kelompok_usaha->nama_produk }}
     </div>
 </div>
