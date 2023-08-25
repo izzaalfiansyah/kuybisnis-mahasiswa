@@ -25,10 +25,10 @@ class KelompokController extends Controller
 
         $kelompok = Kelompok::find($id);
         $kelompok_anggota = KelompokAnggota::where('kelompok_id', $id)->get();
-        $kelompok_bisnis = Usaha::where('kelompok_id', $id)->first();
+        $kelompok_usaha = Usaha::where('kelompok_id', $id)->first();
         $kelompok_pemasaran = ProsesPemasaran::where('kelompok_id', $id)->first();
         $kelompok_laporan = $laporanController->index($id);
 
-        return view('admin.kelompok.show', compact('kelompok', 'kelompok_anggota', 'kelompok_bisnis', 'kelompok_pemasaran', 'kelompok_laporan'));
+        return view('admin.kelompok.show', compact('kelompok', 'kelompok_anggota', 'kelompok_usaha', 'kelompok_pemasaran', 'kelompok_laporan'));
     }
 }

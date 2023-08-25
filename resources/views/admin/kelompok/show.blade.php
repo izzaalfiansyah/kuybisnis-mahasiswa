@@ -31,16 +31,27 @@
             </div>
         </div>
 
-        <div class="card card-body bg-white shadow">
+        <div class="card card-body bg-white shadow" x-data="{
+            selected: 1,
+        }">
             <div class="tabs">
-                <a class="tab tab-lg tab-bordered tab-active">Daftar Anggota</a>
-                <a class="tab tab-lg tab-bordered">Pengembangan Bisnis</a>
-                <a class="tab tab-lg tab-bordered">Cara Pemasaran</a>
-                <a class="tab tab-lg tab-bordered">Hasil Kegiatan</a>
+                <a href="javascript:void(0)" x-on:click="selected = 1"
+                    x-bind:class="'tab tab-lg tab-bordered ' + (selected == 1 ? 'tab-active' : '')">Daftar Anggota</a>
+                <a href="javascript:void(0)" x-on:click="selected = 2"
+                    x-bind:class="'tab tab-lg tab-bordered ' + (selected == 2 ? 'tab-active' : '')">Jenis Usaha</a>
+                <a href="javascript:void(0)" x-on:click="selected = 3"
+                    x-bind:class="'tab tab-lg tab-bordered ' + (selected == 3 ? 'tab-active' : '')">Pemasaran Bisnis</a>
+                <a href="javascript:void(0)" x-on:click="selected = 4"
+                    x-bind:class="'tab tab-lg tab-bordered ' + (selected == 4 ? 'tab-active' : '')">Hasil Kegiatan</a>
             </div>
 
             <div class="mt-10">
-                @include('admin.kelompok.partials.anggota')
+                <div x-show="selected == 1">
+                    @include('admin.kelompok.partials.anggota')
+                </div>
+                <div x-show="selected == 2">
+                    @include('admin.kelompok.partials.usaha')
+                </div>
             </div>
         </div>
     </div>
