@@ -67,6 +67,13 @@
                 
                 $result = $medals[$hasil['medal']];
             @endphp
+            <div class="card bg-white shadow">
+                <div class="card-body">
+                    <div class="card-title mb-5">Video Motivasi</div>
+                    <iframe src="{{ $app_pengaturan->link_video_hasil_akhir_kegiatan }}" class="w-full h-80 rounded-lg">
+                    </iframe>
+                </div>
+            </div>
             <div class="stats w-full shadow">
                 <div class="stat">
                     <div class="stat-figure text-orange-500">

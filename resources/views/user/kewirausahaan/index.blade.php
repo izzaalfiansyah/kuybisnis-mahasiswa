@@ -3,7 +3,8 @@
         <div class="card bg-white shadow">
             <div class="card-body">
                 <div class="card-title mb-5">Video Motivasi</div>
-                <div class="h-72"></div>
+                <iframe src="{{ $app_pengaturan->link_video_bisnis_plan }}" class="w-full h-80 rounded-lg">
+                </iframe>
             </div>
         </div>
         @if (request()->user()->kelompok?->id)
@@ -102,7 +103,8 @@
                     </div>
                     <div class="form-control mb-3">
                         <label for="" class="label">Key Partners</label>
-                        <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Mitra Utama" name="mitra_utama">{{ old('mitra_utama', $usaha?->mitra_utama) }}</textarea>
+                        <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Mitra Utama"
+                            name="mitra_utama">{{ old('mitra_utama', $usaha?->mitra_utama) }}</textarea>
                         <div class="label label-alt-text">
                             <x-input-error :messages="$errors->get('mitra_utama')" />
                         </div>

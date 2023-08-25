@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User;
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(function () {
     Route::get('/dashboard', [Admin\BerandaController::class, 'index'])->name('admin.dashboard.index');
