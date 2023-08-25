@@ -33,15 +33,24 @@
 
         <div class="card card-body bg-white shadow" x-data="{
             selected: 1,
+            hash: window.location.hash,
+            setSelected(val) {
+                this.selected = val;
+                window.location.hash = '#tab-' + val;
+            }
+        }" x-init="() => {
+            if (hash.includes('tab-')) {
+                selected = hash.split('tab-')[1];
+            }
         }">
             <div class="tabs">
-                <a href="javascript:void(0)" x-on:click="selected = 1"
+                <a href="javascript:void(0)" x-on:click="setSelected(1)"
                     x-bind:class="'tab tab-lg tab-bordered ' + (selected == 1 ? 'tab-active' : '')">Daftar Anggota</a>
-                <a href="javascript:void(0)" x-on:click="selected = 2"
+                <a href="javascript:void(0)" x-on:click="setSelected(2)"
                     x-bind:class="'tab tab-lg tab-bordered ' + (selected == 2 ? 'tab-active' : '')">Jenis Usaha</a>
-                <a href="javascript:void(0)" x-on:click="selected = 3"
+                <a href="javascript:void(0)" x-on:click="setSelected(3)"
                     x-bind:class="'tab tab-lg tab-bordered ' + (selected == 3 ? 'tab-active' : '')">Pemasaran Bisnis</a>
-                <a href="javascript:void(0)" x-on:click="selected = 4"
+                <a href="javascript:void(0)" x-on:click="setSelected(4)"
                     x-bind:class="'tab tab-lg tab-bordered ' + (selected == 4 ? 'tab-active' : '')">Hasil Kegiatan</a>
             </div>
 
