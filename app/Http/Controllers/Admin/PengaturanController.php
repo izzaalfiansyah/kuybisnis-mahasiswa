@@ -26,4 +26,19 @@ class PengaturanController extends Controller
 
         return redirect()->route('admin.pengaturan.index')->with('success_message', 'pengaturan berhasil disimpan');
     }
+
+    function emailStore(Request $req)
+    {
+        $data = $req->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        Pengaturan::find('1')->update([
+            'mail_username' => $req->username,
+            'mail_password' => $req->password,
+        ]);
+
+        return redirect()->route('admin.pengaturan.index')->with('success_message', 'pengaturan email smtp berhasil disimpan');
+    }
 }

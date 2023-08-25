@@ -18,5 +18,7 @@ class Pengaturan extends Model
         'link_video_bisnis_plan',
         'link_video_strategi_marketing',
         'link_video_hasil_akhir_kegiatan',
+        'mail_username',
+        'mail_password',
     ];
 }

@@ -41,6 +41,7 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(f
     ]);
     Route::get('/pengaturan', [Admin\PengaturanController::class, 'index'])->name('admin.pengaturan.index');
     Route::post('/pengaturan', [Admin\PengaturanController::class, 'store'])->name('admin.pengaturan.store');
+    Route::post('/pengaturan/email', [Admin\PengaturanController::class, 'emailStore'])->name('admin.pengaturan.email.store');
 });
 
 Route::middleware(['auth', 'verified', 'auth_web'])->group(function () {
