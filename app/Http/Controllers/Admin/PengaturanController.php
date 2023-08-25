@@ -30,13 +30,19 @@ class PengaturanController extends Controller
     function emailStore(Request $req)
     {
         $data = $req->validate([
+            'host' => 'required',
+            'port' => 'required',
             'username' => 'required',
             'password' => 'required',
+            'enkripsi' => 'nullable',
         ]);
 
         Pengaturan::find('1')->update([
+            'mail_host' => $req->host,
+            'mail_port' => $req->port,
             'mail_username' => $req->username,
             'mail_password' => $req->password,
+            'mail_enkripsi' => $req->enkripsi,
         ]);
 
         return redirect()->route('admin.pengaturan.index')->with('success_message', 'pengaturan email smtp berhasil disimpan');

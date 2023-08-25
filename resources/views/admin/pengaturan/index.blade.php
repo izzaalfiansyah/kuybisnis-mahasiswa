@@ -50,30 +50,57 @@
                 </div>
             </div>
         </form>
-        <form method="POST" action="{{ route('admin.pengaturan.email.store') }}" class="card bg-white shadow">
-            @csrf
-            <div class="card-body">
-                <div class="card-title mb-5">Pengaturan Email SMTP</div>
-                <div class="form-control">
-                    <label for="" class="label">Username</label>
-                    <input type="text" class="input input-bordered" name="username" required
-                        value="{{ old('username', $pengaturan?->mail_username) }}">
-                    <div class="label label-alt-text">
-                        <x-input-error :messages="$errors->get('username')"></x-input-error>
+
+        @if ($pengaturan)
+            <form method="POST" action="{{ route('admin.pengaturan.email.store') }}" class="card bg-white shadow">
+                @csrf
+                <div class="card-body">
+                    <div class="card-title mb-5">Pengaturan Email SMTP</div>
+                    <div class="form-control">
+                        <label for="" class="label">Host</label>
+                        <input type="text" class="input input-bordered" name="host"
+                            value="{{ old('host', $pengaturan?->mail_host) }}">
+                        <div class="label label-alt-text">
+                            <x-input-error :messages="$errors->get('host')"></x-input-error>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="" class="label">Port</label>
+                        <input type="text" class="input input-bordered" name="port"
+                            value="{{ old('port', $pengaturan?->mail_port) }}">
+                        <div class="label label-alt-text">
+                            <x-input-error :messages="$errors->get('port')"></x-input-error>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="" class="label">Username</label>
+                        <input type="text" class="input input-bordered" name="username"
+                            value="{{ old('username', $pengaturan?->mail_username) }}">
+                        <div class="label label-alt-text">
+                            <x-input-error :messages="$errors->get('username')"></x-input-error>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="" class="label">Password</label>
+                        <input type="text" class="input input-bordered" name="password"
+                            value="{{ old('password', $pengaturan?->mail_password) }}">
+                        <div class="label label-alt-text">
+                            <x-input-error :messages="$errors->get('password')"></x-input-error>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="" class="label">Enrkipsi</label>
+                        <input type="text" class="input input-bordered" name="enrkipsi"
+                            value="{{ old('enrkipsi', $pengaturan?->mail_enrkipsi) }}">
+                        <div class="label label-alt-text">
+                            <x-input-error :messages="$errors->get('enrkipsi')"></x-input-error>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                     </div>
                 </div>
-                <div class="form-control">
-                    <label for="" class="label">Password</label>
-                    <input type="text" class="input input-bordered" name="password" required
-                        value="{{ old('password', $pengaturan?->mail_password) }}">
-                    <div class="label label-alt-text">
-                        <x-input-error :messages="$errors->get('password')"></x-input-error>
-                    </div>
-                </div>
-                <div class="mt-8">
-                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        @endif
     </div>
 </x-app-layout>
