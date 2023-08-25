@@ -19,17 +19,14 @@ class Controller extends BaseController
         View::share('app_pengaturan', $pengaturan);
 
         if ($pengaturan?->mail_username) {
-            $config = array(
-                'driver'     => 'smtp',
-                'host'       => 'smtp.gmail.com',
-                'port'       => '465',
-                'from'       => env('MAIL_FROM_ADDRESS'),
-                'encryption' => 'ssl',
-                'username'   => $pengaturan?->mail_username,
-                'password'   => $pengaturan?->mail_password,
-            );
-
-            Config::set('mail', $config);
+            Config::set('mail.driver', 'smtp');
+            Config::set('mail.mailer', 'smtp');
+            Config::set('mail.host', 'smtp.gmail.com');
+            Config::set('mail.port', '465');
+            Config::set('mail.encryption', 'ssl');
+            Config::set('mail.from.address', 'admin@kuybisnis.com');
+            Config::set('mail.username', $pengaturan->mail_username);
+            Config::set('mail.username', $pengaturan->mail_password);
         }
     }
 }

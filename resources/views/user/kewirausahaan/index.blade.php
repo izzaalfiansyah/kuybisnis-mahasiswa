@@ -7,7 +7,7 @@
                 </iframe>
             </div>
         </div>
-        @if (request()->user()->kelompok?->id)
+        @if (request()->user()->kelompok)
             <div class="card bg-white shadow">
                 <form method="post" class="card-body" action="{{ route('user.kewirausahaan.store') }}"
                     enctype="multipart/form-data">
@@ -133,9 +133,11 @@
                             <x-input-error :messages="$errors->get('foto_produk')" />
                         </div>
                         <div class="mt-3 grid lg:grid-cols-4 grid-cols-2 gap-4">
-                            @foreach ($usaha?->foto_produk as $item)
-                                <img src="{{ asset($item) }}" alt="" class="shadow">
-                            @endforeach
+                            @if ($usaha?->foto_produk)
+                                @foreach ($usaha?->foto_produk as $item)
+                                    <img src="{{ asset($item) }}" alt="" class="shadow">
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="mt-10">
@@ -143,9 +145,8 @@
                     </div>
                 </form>
             </div>
-    </div>
-@else
-    <x-no-kelompok></x-no-kelompok>
-    @endif
+        @else
+            <x-no-kelompok></x-no-kelompok>
+        @endif
     </div>
 </x-app-layout>
