@@ -19,8 +19,13 @@ class PengaturanController extends Controller
     function store(PengaturanRequest $req)
     {
         $data = $req->validated();
-        $data['nama_aplikasi'] = "Kuybisnis";
-        $data['logo_aplikasi'] = "favicon.png";
+
+        if ($req->logo_aplikasi) {
+            $logo = $req->file('logo_aplikasi');
+            $data['logo_aplikasi'] = $logo->store('assets/', ['disk' => 'public_upload']);
+        } else {
+            unset($data['logo_aplikasi']);
+        }
 
         Pengaturan::updateOrCreate(['id' => '1'], $data);
 

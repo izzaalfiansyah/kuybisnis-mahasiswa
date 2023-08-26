@@ -1,9 +1,27 @@
 <x-app-layout title="Pengaturan">
     <div class="space-y-5">
-        <form method="POST" action="{{ route('admin.pengaturan.store') }}" class="card bg-white shadow">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('admin.pengaturan.store') }}"
+            class="card bg-white shadow">
             @csrf
             <div class="card-body">
-                <div class="card-title mb-5">Pengaturan Video</div>
+                <div class="card-title mb-5">Pengaturan Aplikasi</div>
+
+                <div class="form-control">
+                    <label for="" class="label">Nama Aplikasi</label>
+                    <input type="text" class="input input-bordered max-w-xl" name="nama_aplikasi"
+                        placeholder="Nama Aplikasi" value="{{ old('nama_aplikasi', $pengaturan?->nama_aplikasi) }}">
+                    <div class="label label-alt-text">
+                        <x-input-error :messages="$errors->get('nama_aplikasi')"></x-input-error>
+                    </div>
+                </div>
+
+                <div class="form-control">
+                    <label for="" class="label">Logo Aplikasi</label>
+                    <input type="file" class="file-input file-input-bordered max-w-xl" name="logo_aplikasi">
+                    <div class="label label-alt-text">
+                        <x-input-error :messages="$errors->get('logo_aplikasi')"></x-input-error>
+                    </div>
+                </div>
 
                 <div class="form-control">
                     <label for="" class="label">Video Homepage</label>
