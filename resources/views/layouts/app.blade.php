@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'KuyBisnis') }}</title>
+    <title>{{ $app_pengaturan?->nama_aplikasi ?: config('app.name', 'KuyBisnis') }} - {{ $title }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -29,8 +29,9 @@
             x-bind:class="'fixed top-0 left-0 bottom-0 w-72 bg-white shadow z-40 text-white lg:translate-x-0 transition ' + (
                 showSidebar ? 'translate-x-0' : '-translate-x-full')">
             <div class="bg-primary p-4 px-8">
-                <div class="flex items-center p-5 bg-white rounded-lg">
-                    <img src="{{ asset('assets/home/img/logo.png') }}" alt="Logo APP">
+                <div class="flex items-center p-5 bg-white rounded-lg justify-center">
+                    <img src="{{ asset($app_pengaturan?->logo_aplikasi ?: 'favicon.ico') }}" alt="Logo APP"
+                        class="max-h-20">
                 </div>
                 <div class="mt-5">
                     <div class="truncate">{{ request()->user()->name }}</div>

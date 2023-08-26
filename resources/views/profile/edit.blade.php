@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Profil">
     <div class="flex flex-col gap-y-5">
         <div class="card shadow bg-white">
             <div class="card-body max-w-xl">

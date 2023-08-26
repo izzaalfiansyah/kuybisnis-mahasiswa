@@ -17,7 +17,8 @@
 
                 <div class="form-control">
                     <label for="" class="label">Logo Aplikasi</label>
-                    <input type="file" class="file-input file-input-bordered max-w-xl" name="logo_aplikasi">
+                    <input type="file" accept="image/*" class="file-input file-input-bordered max-w-xl"
+                        name="logo_aplikasi">
                     <div class="label label-alt-text">
                         <x-input-error :messages="$errors->get('logo_aplikasi')"></x-input-error>
                     </div>
