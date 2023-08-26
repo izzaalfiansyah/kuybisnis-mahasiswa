@@ -1,4 +1,4 @@
-<x-app-layout title="Penjualan / Tambah">
+<x-app-layout title="Tambah Penjualan">
     <form method="post" action="{{ route('user.penjualan.store') }}" class="card bg-white shadow">
         @csrf
 

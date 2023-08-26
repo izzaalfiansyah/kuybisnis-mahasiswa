@@ -1,4 +1,4 @@
-<x-app-layout title="Penjualan / Tambah">
+<x-app-layout title="Edit Penjualan">
     <form method="post" action="{{ route('user.penjualan.update', $penjualan->id) }}" class="card bg-white shadow">
         @method('PUT')
         @csrf

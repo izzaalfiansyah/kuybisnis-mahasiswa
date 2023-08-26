@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Appku - Software Landing Page">
-    <title>{{ $app_pengaturan?->nama_aplikasi ?: 'KuyBisnis' }} | Konsultasikan Bisnismu</title>
+    <title>{{ $app_pengaturan?->nama_aplikasi ?: config('app.name', 'KuyBisnis') }} | Konsultasikan Bisnismu</title>
     <link rel="shortcut icon" href="{{ asset('/') }}assets/home/img/favicon.png" type="image/x-icon">
     <link href="{{ asset('/') }}assets/home/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ asset('/') }}assets/home/css/font-awesome.min.css" rel="stylesheet" />

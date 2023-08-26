@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Beranda">
     <div class="space-y-6">
         <form class="card bg-white shadow" method="post" action="{{ route('user.kelompok.store') }}">
             @csrf

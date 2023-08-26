@@ -39,7 +39,7 @@
                         <a href="/profile" class="block">
                             <i class="material-icons text-lg">person</i>
                         </a>
-                        <a href="#" class="block" onclick="logout.showModal()">
+                        <a href="javascript:void(0);" class="block" onclick="logout.showModal()">
                             <i class="material-icons text-lg">logout</i>
                         </a>
                     </div>
@@ -129,7 +129,7 @@
                         </li>
                     @endforeach
                     <li>
-                        <a class="flex items-center hover:text-primary py-3" href="#"
+                        <a class="flex items-center hover:text-primary py-3" href="javascript:void(0);"
                             onclick="logout.showModal()">
                             <div class="material-icons text-lg mr-3">logout</div>
                             Logout
@@ -162,7 +162,7 @@
                             (show ? 'scale-100' : 'scale-0')">
                             <li><a href="/profile">Profil</a></li>
                             <li>
-                                <a href="#" onclick="logout.showModal()">Logout</a>
+                                <a href="javascript:void(0);" onclick="logout.showModal()">Logout</a>
                             </li>
                         </ul>
                         {{-- </div> --}}
