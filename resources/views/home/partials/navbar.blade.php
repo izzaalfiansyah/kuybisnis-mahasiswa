@@ -9,8 +9,10 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="index.html">
-                <img src="{{ asset('/') }}assets/home/img/logo-light.png" class="logo logo-display" alt="Logo">
-                <img src="{{ asset('/') }}assets/home/img/logo.png" class="logo logo-scrolled" alt="Logo">
+                <img src="{{ asset($app_pengaturan?->logo_aplikasi ?: 'favicon.ico') }}" class="logo logo-display"
+                    alt="Logo">
+                <img src="{{ asset($app_pengaturan?->logo_aplikasi ?: 'favicon.ico') }}" class="logo logo-scrolled"
+                    alt="Logo">
             </a>
         </div>
         <!-- End Header Navigation -->
@@ -18,7 +20,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-menu">
 
-            <img src="{{ asset('/') }}assets/home/img/logo.png" alt="Logo">
+            <img src="{{ asset($app_pengaturan?->logo_aplikasi ?: 'favicon.ico') }}" alt="Logo">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                 <i class="fa fa-times"></i>
             </button>
