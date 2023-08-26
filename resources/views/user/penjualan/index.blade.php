@@ -14,6 +14,8 @@
                             <tr>
                                 <th>Tanggal</th>
                                 <th>Jam</th>
+                                <th>Jumlah Penjualan</th>
+                                <th>Harga Jual</th>
                                 <th>Total Penjualan</th>
                                 <th>Total Biaya</th>
                                 <th>Nilai Keuntungan</th>
@@ -25,6 +27,8 @@
                                 <tr>
                                     <td><x-format-date :value="$item->created_at"></x-format-date></td>
                                     <td>{{ date('H:i', strtotime($item->created_at)) }}</td>
+                                    <td>{{ $item->penjualan_bersih }}</td>
+                                    <td><x-format-money :value="$item->harga_jual_produk"></x-format-money></td>
                                     <td><x-format-money :value="$item->total_penjualan_bersih"></x-format-money></td>
                                     <td><x-format-money :value="$item->total_biaya"></x-format-money></td>
                                     <td><x-format-money :value="$item->nilai_keuntungan_bersih"></x-format-money></td>
