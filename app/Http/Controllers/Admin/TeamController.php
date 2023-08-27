@@ -35,4 +35,11 @@ class TeamController extends Controller
 
         return redirect()->route('admin.team.index')->with('success_message', 'data tim berhasil ditambah');
     }
+
+    function destroy($id)
+    {
+        Team::destroy($id);
+
+        return redirect()->route('admin.team.index')->with('success_message', 'data tim berhasil dihapus');
+    }
 }

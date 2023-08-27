@@ -1,5 +1,8 @@
 <x-app-layout title="Tim">
-    <div class="card bg-white shadow">
+    <div class="card bg-white shadow" x-data="{
+        nama: '',
+        deleteFormUrl: '',
+    }">
         <div class="card-body">
             <div class="flex items-center justify-between mb-5">
                 <div class="card-title">Data Tim</div>
@@ -24,7 +27,20 @@
                                 </td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->jabatan }}</td>
-                                <td></td>
+                                <td>
+
+                                    <a href="{{ route('admin.team.edit', $item->id) }}" class="btn btn-sm btn-primary">
+                                        <i class="material-icons text-base">edit</i>
+                                    </a>
+                                    <button class="btn btn-sm btn-warning bg-red-500 text-white" type="button"
+                                        x-on:click="() => {
+                                    nama = '{{ $item->nama }}';
+                                    deleteFormUrl = '{{ route('admin.team.destroy', $item->id) }}';
+                                    deleteModal.showModal();
+                                }">
+                                        <i class="material-icons text-base">delete</i>
+                                    </button>
+                                </td>
                             </tr>
                         @empty
                             <tr>
@@ -35,5 +51,19 @@
                 </table>
             </div>
         </div>
+
+        <x-dialog id="deleteModal" header="Hapus Tim">
+            <form x-bind:action="deleteFormUrl" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <p>Anda yakin menghapus <span class="font-semibold" x-text="nama"></span>?</p>
+                <div class="mt-5 flex justify-end">
+                    <button type="submit" class="btn btn-warning bg-red-500 text-white">
+                        Hapus
+                    </button>
+                </div>
+            </form>
+        </x-dialog>
     </div>
 </x-app-layout>
