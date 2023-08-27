@@ -55,7 +55,7 @@ class LaporanController extends Controller
             ];
 
             if ($proses->jenis_laporan == 'harian') {
-                $data_penjualan = Penjualan::select(
+                $items = Penjualan::select(
                     DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
                     DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
                     DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
@@ -66,8 +66,9 @@ class LaporanController extends Controller
                     DB::raw('date_format(created_at, "%Y-%m-%d") as tanggal')
                 )->where('kelompok_id', $kelompokId)
                     ->orderBy('tanggal', 'desc')
-                    ->groupBy('tanggal')
-                    ->simplePaginate(7);
+                    ->groupBy('tanggal');
+
+                $data_penjualan = $items->simplePaginate(7);
 
                 foreach ($data_penjualan as $item) {
                     $labels[] = formatDate($item->tanggal);
@@ -77,7 +78,7 @@ class LaporanController extends Controller
                     $nilai_keuntungan[] = $item->nilai_keuntungan_bersih;
                 }
             } else if ($proses->jenis_laporan == 'mingguan') {
-                $data_penjualan = Penjualan::select(
+                $items = Penjualan::select(
                     DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
                     DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
                     DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
@@ -88,9 +89,9 @@ class LaporanController extends Controller
                     DB::raw('date_format(created_at, "Pekan %V - %Y") as pekan')
                 )->where('kelompok_id', $kelompokId)
                     ->orderBy('pekan', 'desc')
-                    ->groupBy('pekan')
-                    ->simplePaginate(5);
+                    ->groupBy('pekan');
 
+                $data_penjualan = $items->simplePaginate(5);
 
                 foreach ($data_penjualan as $item) {
                     $labels[] = $item->pekan;
@@ -100,7 +101,7 @@ class LaporanController extends Controller
                     $nilai_keuntungan[] = $item->nilai_keuntungan_bersih;
                 }
             } else {
-                $data_penjualan = $data_penjualan = Penjualan::select(
+                $items = Penjualan::select(
                     DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
                     DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
                     DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
@@ -111,8 +112,9 @@ class LaporanController extends Controller
                     DB::raw('date_format(created_at, "%Y-%m") as bulan')
                 )->where('kelompok_id', $kelompokId)
                     ->orderBy('bulan', 'desc')
-                    ->groupBy('bulan')
-                    ->simplePaginate(6);
+                    ->groupBy('bulan');
+
+                $data_penjualan = $items->simplePaginate(6);
 
                 foreach ($data_penjualan as $item) {
                     $labels[] = substr(formatDate($item->bulan), 3);
@@ -134,6 +136,7 @@ class LaporanController extends Controller
             'grafik' => $grafik,
             'hasil' => $hasil,
             'data_penjualan' => $data_penjualan,
+            'items' => $items->get(),
         ];
 
         if ($id) {
