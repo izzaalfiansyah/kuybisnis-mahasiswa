@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('jabatan');
             $table->text('foto');
+            $table->text('media_sosial');
             $table->timestamps();
         });
     }
