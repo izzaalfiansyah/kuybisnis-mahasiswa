@@ -16,12 +16,15 @@ return new class extends Migration
             $table->string('nama');
             $table->string('jabatan');
             $table->text('foto');
-            $table->text('media_sosial');
+            $table->text('media_sosial')->nullable();
+            $table->string('akun_instagram');
+            $table->string('akun_twitter');
+            $table->string('akun_facebook');
             $table->timestamps();
         });
     }
 
-    /**
+    /**`
      * Reverse the migrations.
      */
     public function down(): void

@@ -16,6 +16,9 @@ class Team extends Model
         'jabatan',
         'foto',
         'media_sosial',
+        'akun_instagram',
+        'akun_facebook',
+        'akun_twitter',
     ];
 
     public $casts = [
