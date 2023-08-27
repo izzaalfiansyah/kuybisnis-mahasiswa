@@ -18,89 +18,37 @@
         <div class="team-items">
             <div class="row">
                 <!-- Single Item -->
-                <div class="single-item col-lg-4 col-md-6">
-                    <div class="item">
-                        <div class="thumb">
-                            <img src="{{ asset('/') }}assets/home/img/800x900.png" alt="Thumb">
-                            <div class="social">
-                                <input type="checkbox" id="toggle" class="share-toggle" hidden>
-                                <label for="toggle" class="share-button">
-                                    <i class="fas fa-plus"></i>
-                                </label>
-                                <a href="#" class="share-icon facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="share-icon twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="share-icon instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
+                @foreach ($team as $item)
+                    <div class="single-item col-lg-4 col-md-6">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="{{ asset($item->foto) }}" alt="{{ $item->nama }}">
+                                <div class="social">
+                                    <input type="checkbox" id="toggle-{{ $item->id }}" class="share-toggle" hidden>
+                                    <label for="toggle-{{ $item->id }}" class="share-button">
+                                        <i class="fas fa-plus"></i>
+                                    </label>
+                                    <a href="https://facebook.com/search/people/?q={{ $item->akun_facebook }}"
+                                        target="_blank" class="share-icon facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="https://twitter.com/{{ $item->akun_twitter }}" target="_blank"
+                                        class="share-icon twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="https://instagram.com/{{ $item->akun_instagram }}" target="_blank"
+                                        class="share-icon instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4><a href="javascript:void(0)">{{ $item->nama }}</a></h4>
+                                <span>{{ $item->jabatan }}</span>
                             </div>
                         </div>
-                        <div class="info">
-                            <h4><a href="team-details.html">Muhammad Mauribi</a></h4>
-                            <span>CEO & Founder</span>
-                        </div>
                     </div>
-                </div>
-                <!-- End Single Item -->
-                <!-- Single Item -->
-                <div class="single-item col-lg-4 col-md-6">
-                    <div class="item">
-                        <div class="thumb">
-                            <img src="{{ asset('/') }}assets/home/img/800x900.png" alt="Thumb">
-                            <div class="social">
-                                <input type="checkbox" id="toggle2" class="share-toggle" hidden>
-                                <label for="toggle2" class="share-button">
-                                    <i class="fas fa-plus"></i>
-                                </label>
-                                <a href="#" class="share-icon facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="share-icon twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="share-icon instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4><a href="team-details.html">Muhammad Mauribi</a></h4>
-                            <span>Chieft Marketing Officier (CMO)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Item -->
-                <!-- Single Item -->
-                <div class="single-item col-lg-4 col-md-6">
-                    <div class="item">
-                        <div class="thumb">
-                            <img src="{{ asset('/') }}assets/home/img/800x900.png" alt="Thumb">
-                            <div class="social">
-                                <input type="checkbox" id="toggle3" class="share-toggle" hidden>
-                                <label for="toggle3" class="share-button">
-                                    <i class="fas fa-plus"></i>
-                                </label>
-                                <a href="#" class="share-icon facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="share-icon twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="share-icon instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4><a href="team-details.html">Muhammad Mauribi</a></h4>
-                            <span>Web Developer</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Item -->
+                @endforeach
             </div>
         </div>
     </div>
