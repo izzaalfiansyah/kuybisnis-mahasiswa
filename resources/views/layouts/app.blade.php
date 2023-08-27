@@ -71,6 +71,11 @@
                                 'icon' => 'switch_account',
                             ],
                             [
+                                'route' => 'admin.team.index',
+                                'title' => 'Tim',
+                                'icon' => 'groups',
+                            ],
+                            [
                                 'route' => 'admin.pengaturan.index',
                                 'title' => 'Pengaturan',
                                 'icon' => 'settings',

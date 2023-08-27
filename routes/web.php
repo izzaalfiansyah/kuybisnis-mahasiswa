@@ -30,15 +30,18 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(f
     Route::resource('/kelompok', Admin\KelompokController::class, [
         'as' => 'admin',
     ]);
-    Route::post('/kelompok/anggota', [Admin\KelompokAnggotaController::class, 'store'])->name('admin.kelompok.anggota.store');
-    Route::delete('/kelompok/anggota/{id}', [Admin\KelompokAnggotaController::class, 'destroy'])->name('admin.kelompok.anggota.destroy');
-    Route::get('/kelompok/kewirausahaan', [User\KewirausahaanController::class, 'index'])->name('admin.kelompok.kewirausahaan.index');
-    Route::post('/kelompok/kewirausahaan', [User\KewirausahaanController::class, 'store'])->name('admin.kelompok.kewirausahaan.store');
-    Route::get('/kelompok/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index'])->name('admin.kelompok.pemasaran-bisnis.index');
-    Route::post('/kelompok/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'store'])->name('admin.kelompok.pemasaran-bisnis.store');
-    Route::resource('/kelompok/penjualan', User\PenjualanController::class, [
+    Route::resource('/team', Admin\TeamController::class, [
         'as' => 'admin',
     ]);
+    Route::post('/kelompok/anggota', [Admin\KelompokAnggotaController::class, 'store'])->name('admin.kelompok.anggota.store');
+    Route::delete('/kelompok/anggota/{id}', [Admin\KelompokAnggotaController::class, 'destroy'])->name('admin.kelompok.anggota.destroy');
+    // Route::get('/kelompok/kewirausahaan', [User\KewirausahaanController::class, 'index'])->name('admin.kelompok.kewirausahaan.index');
+    // Route::post('/kelompok/kewirausahaan', [User\KewirausahaanController::class, 'store'])->name('admin.kelompok.kewirausahaan.store');
+    // Route::get('/kelompok/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'index'])->name('admin.kelompok.pemasaran-bisnis.index');
+    // Route::post('/kelompok/pemasaran-bisnis', [User\PemasaranBisnisController::class, 'store'])->name('admin.kelompok.pemasaran-bisnis.store');
+    // Route::resource('/kelompok/penjualan', User\PenjualanController::class, [
+    //     'as' => 'admin',
+    // ]);
     Route::get('/pengaturan', [Admin\PengaturanController::class, 'index'])->name('admin.pengaturan.index');
     Route::post('/pengaturan', [Admin\PengaturanController::class, 'store'])->name('admin.pengaturan.store');
     Route::post('/pengaturan/email', [Admin\PengaturanController::class, 'emailStore'])->name('admin.pengaturan.email.store');
