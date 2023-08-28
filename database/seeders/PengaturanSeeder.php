@@ -19,7 +19,7 @@ class PengaturanSeeder extends Seeder
             'link_video_homepage' => '',
             'link_video_bisnis_plan' => '',
             'link_video_strategi_marketing' => '',
-            'link_video_hasil_akhir kegiatan' => '',
+            'link_video_hasil_akhir_kegiatan' => '',
             'mail_host' => 'sandbox.smtp.mailtrap.io',
             'mail_port' => '2525',
             'mail_username' => '16d58b0c89cba1',
