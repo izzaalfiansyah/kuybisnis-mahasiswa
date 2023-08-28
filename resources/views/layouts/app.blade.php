@@ -71,14 +71,14 @@
                                 'icon' => 'switch_account',
                             ],
                             [
-                                'route' => 'admin.team.index',
-                                'title' => 'Tim',
-                                'icon' => 'groups',
-                            ],
-                            [
                                 'route' => 'admin.pengaturan.index',
                                 'title' => 'Pengaturan',
                                 'icon' => 'settings',
+                            ],
+                            [
+                                'route' => 'admin.team.index',
+                                'title' => 'Grup Tim',
+                                'icon' => 'groups',
                             ],
                             [
                                 'route' => 'profile.edit',
@@ -143,7 +143,7 @@
                 </ul>
             </div>
         </div>
-        <div class="lg:ml-72">
+        <div class="lg:ml-72" id="yield-content">
             <div class="shadow bg-white mb-8 sticky top-0 left-0 right-0 z-[10]">
                 <div class="flex items-center justify-between h-20 px-5">
                     <div class="flex items-center">
