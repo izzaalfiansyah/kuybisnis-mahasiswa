@@ -19,5 +19,13 @@ class AdminSeeder extends Seeder
             'role' => '1',
             'email_verified_at' => date('Y-m-d H:i:s'),
         ]);
+
+        \App\Models\User::create([
+            'name' => 'User',
+            'email' => 'user@user.com',
+            'password' => 'user',
+            'role' => '2',
+            'email_verified_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }

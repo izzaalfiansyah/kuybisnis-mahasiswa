@@ -20,7 +20,7 @@
                         <h4 class="widget-title">Quick LInk</h4>
                         <ul>
                             <li>
-                                <a href="index.html"><i class="fas fa-angle-right"></i> Home</a>
+                                <a href="{{ url('/') }}"><i class="fas fa-angle-right"></i> Home</a>
                             </li>
                             <li>
                                 <a href="about-us.html"><i class="fas fa-angle-right"></i> About us</a>
