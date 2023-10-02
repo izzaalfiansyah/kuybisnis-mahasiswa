@@ -136,7 +136,7 @@ class LaporanController extends Controller
             'grafik' => $grafik,
             'hasil' => $hasil,
             'data_penjualan' => $data_penjualan,
-            'items' => $items->get(),
+            'items' => isset($items) ? $items->get() : null,
         ];
 
         if ($id) {
