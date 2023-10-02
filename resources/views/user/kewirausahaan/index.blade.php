@@ -95,7 +95,12 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Channels</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Channels</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="channels.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Saluran" name="saluran">{{ old('saluran', $usaha?->saluran) }}</textarea>
                         <div class="label label-alt-text">
                             <x-input-error :messages="$errors->get('saluran')" />
@@ -164,22 +169,22 @@
 
             <x-dialog id="valueProposition" header="Value Proposition" class="lg:w-3/5 max-w-full">
                 <div class="mb-5">
-                    <p class="text-justify mb-2">
+                    <div class="text-justify mb-2">
                         Sederhananya, value proposition merupakan nilai jual produk/jasa Anda sehingga konsumen memilih
                         perusahaan Anda daripada kompetitor. Sebelum menentukan hal yang lain, value proposition sangat
                         krusial untuk diketahui agar bisnis Anda menjual apa yang konsumen benar-benar butuhkan dan
                         memastikan apakah perusahaan Anda menjual solusi atas permasalahan mereka.
-                    </p>
-                    <p class="text-justify mb-2">
+                    </div>
+                    <div class="text-justify mb-2">
                         Berikut adalah beberapa pertanyaan yang dapat membantu Anda:
-                    </p>
-                    <p class="text-justify mb-2">
-                    <ul class="list-disc pl-5">
-                        <li>Apa penyebab masalah itu terjadi?</li>
-                        <li>Mengapa konsumen ingin masalah tersebut hilang?</li>
-                        <li>Apa manfaat bisnis saya untuk konsumen?</li>
-                    </ul>
-                    </p>
+                    </div>
+                    <div class="text-justify mb-2">
+                        <ul class="list-disc pl-5">
+                            <li>Apa penyebab masalah itu terjadi?</li>
+                            <li>Mengapa konsumen ingin masalah tersebut hilang?</li>
+                            <li>Apa manfaat bisnis saya untuk konsumen?</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="modal-action">
                     <button class="btn" type="button" onclick="valueProposition.close()">Tutup</button>
@@ -188,23 +193,23 @@
 
             <x-dialog id="customerSegments" header="Customer Segments" class="lg:w-3/5 max-w-full">
                 <div class="mb-5">
-                    <p class="text-justify mb-2">
+                    <div class="text-justify mb-2">
                         Value proposition saling berkaitan erat dengan segmentasi konsumen Anda. Target konsumen bisa
                         dibagi menjadi berbagai segmen sesuai kebutuhan, contohnya, berdasarkan usia, gender, hobi
                         maupun tingkat konsumerisme.
-                    </p>
-                    <p class="text-justify mb-2">
+                    </div>
+                    <div class="text-justify mb-2">
                         Lalu, bagaimana cara mengetahui secara spesifik target konsumen kita?
-                    </p>
-                    <p class="text-justify mb-2">
+                    </div>
+                    <div class="text-justify mb-2">
                         Beberapa pertanyaan di bawah ini bisa digunakan untuk menentukan target konsumen Anda!
-                    </p>
+                    </div>
                     <div class="text-justify mb-2">
                         <ul class="list-disc pl-5">
                             <li>Kepada siapa solusi Anda paling memberikan dampak positif?</li>
                             <li>Apakah solusi Anda cocok untuk perorangan atau bisnis lain?</li>
                             <li>Bagaimana karakter perorangan atau bisnis tersebut?</li>
-                            <li>Solusi Anda cocok untuk laki-laki atau perempuan? Atau keduanya</li>
+                            <li>Solusi Anda cocok untuk laki-laki atau perempuan? Atau keduanya?</li>
                             <li>Berapa umur mereka?</li>
                         </ul>
                     </div>
@@ -216,11 +221,11 @@
 
             <x-dialog id="customerRelationship" header="Customer Segments" class="lg:w-3/5 max-w-full">
                 <div class="mb-5">
-                    <p class="text-justify mb-2">
+                    <div class="text-justify mb-2">
                         Jadi, tadi kita sudah menentukan Value Proposition dan segmentasi konsumen. Selanjutnya adalah
                         memahami konsumen Anda dan "mendekati" mereka.
-                    </p>
-                    <p class="text-justify mb-2">
+                    </div>
+                    <div class="text-justify mb-2">
                         Cara mendekati konsumen ada banyak, baik secara personal, by phone, dan sebagainya. Di dalam
                         customer relationship, Anda dapat mengetahui cara apa yang paling efektif untuk berinteraksi
                         dengan konsumen maupun calon konsumen. Misalnya Anda memiliki bisnis online yang menjual produk
@@ -228,15 +233,44 @@
                         yang suka berdandan atau berpenampilan rapi. Lalu bagaimana membuat mereka mau membeli produk
                         aksesoris rambut Anda? Dengan memberikan informasi seputar perawatan rambut, tips mengikat
                         rambut, dan sebagainya.
-                    </p>
-                    <p class="text-justify mb-2">
+                    </div>
+                    <div class="text-justify mb-2">
                         Cara termudah menjangkau konsumen milenial adalah dengan berinteraksi lewat channel yang ´sering
                         didatangi oleh target konsumen Anda´, berkomunikasi sesuai dengan bahasa mereka (ala milenial
                         misalnya) dan memberikan konten-konten yang relevan dengan interest mereka.
-                    </p>
+                    </div>
                 </div>
                 <div class="modal-action">
                     <button class="btn" type="button" onclick="customerRelationship.close()">Tutup</button>
+                </div>
+            </x-dialog>
+
+            <x-dialog id="channels" header="Channels" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <div class="text-justify mb-2">
+                        Di bagian customer relationship, kita sudah membahas cara "PDKT" dengan konsumen Anda sesuai
+                        dengan bahasa dan interest mereka. Kini saatnya Anda benar-benar menemui dan berbicara mereka.
+                    </div>
+                    <div class="text-justify mb-2">
+                        Bisa dikatakan, channel merupakan tempat pertemuan Anda dengan konsumen. Pertanyaan berikut
+                        dapat membantu Anda mengidentifikasi tempat mana yang ideal untuk bertemu dengan mereka.
+                    </div>
+                    <div class="text-justify mb-2">
+                        <ul class="list-disc pl-5">
+                            <li>Dimana konsumen Anda berada?</li>
+                            <li>Apakah mereka aktif menggunakan sosmed?</li>
+                            <li>Apakah mereka suka mendengarkan radio atau aplikasi musik?</li>
+                            <li>Apakah mereka suka menghadiri event atau seminar?</li>
+                            <li>Apakah mereka suka menonton TV?</li>
+                        </ul>
+                    </div>
+                    <div class="text-justify mb-2">
+                        Hal ini dapat menentukan dimana Anda harus meletakkan advertisement. Apakah billboard, di
+                        Instagram, di koran dan lain sebagainya.
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="channels.close()">Tutup</button>
                 </div>
             </x-dialog>
         @else
