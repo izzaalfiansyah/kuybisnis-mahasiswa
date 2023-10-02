@@ -68,7 +68,12 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Customer Segments</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Customer Segments</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="customerSegments.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Segmentasi Konsumen"
                             name="segmentasi_konsumen">{{ old('segmentasi_konsumen', $usaha?->segmentasi_konsumen) }}</textarea>
                         <div class="label label-alt-text">
@@ -172,6 +177,32 @@
                 </div>
                 <div class="modal-action">
                     <button class="btn" type="button" onclick="valueProposition.close()">Tutup</button>
+                </div>
+            </x-dialog>
+
+            <x-dialog id="customerSegments" header="Customer Segments" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <p class="text-justify mb-2">
+                        Jadi, tadi kita sudah menentukan Value Proposition dan segmentasi konsumen. Selanjutnya adalah
+                        memahami konsumen Anda dan "mendekati" mereka.
+                    </p>
+                    <p class="text-justify mb-2">
+                        Cara mendekati konsumen ada banyak, baik secara personal, by phone, dan sebagainya. Di dalam
+                        customer relationship, Anda dapat mengetahui cara apa yang paling efektif untuk berinteraksi
+                        dengan konsumen maupun calon konsumen. Misalnya Anda memiliki bisnis online yang menjual produk
+                        aksesoris rambut dengan target usia 18-25 tahun. Tentunya target konsumen Anda adalah perempuan
+                        yang suka berdandan atau berpenampilan rapi. Lalu bagaimana membuat mereka mau membeli produk
+                        aksesoris rambut Anda? Dengan memberikan informasi seputar perawatan rambut, tips mengikat
+                        rambut, dan sebagainya.
+                    </p>
+                    <p class="text-justify mb-2">
+                        Cara termudah menjangkau konsumen milenial adalah dengan berinteraksi lewat channel yang ´sering
+                        didatangi oleh target konsumen Anda´, berkomunikasi sesuai dengan bahasa mereka (ala milenial
+                        misalnya) dan memberikan konten-konten yang relevan dengan interest mereka.
+                    </p>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="customerSegments.close()">Tutup</button>
                 </div>
             </x-dialog>
         @else
