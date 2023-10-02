@@ -81,7 +81,13 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Customer Relationship</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Customer Relationship</label>
+                            <button class="btn btn-sm btn-ghost" type="button"
+                                onclick="customerRelationship.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Hubungan Konsumen"
                             name="hubungan_konsumen">{{ old('hubungan_konsumen', $usaha?->hubungan_konsumen) }}</textarea>
                         <div class="label label-alt-text">
@@ -183,6 +189,34 @@
             <x-dialog id="customerSegments" header="Customer Segments" class="lg:w-3/5 max-w-full">
                 <div class="mb-5">
                     <p class="text-justify mb-2">
+                        Value proposition saling berkaitan erat dengan segmentasi konsumen Anda. Target konsumen bisa
+                        dibagi menjadi berbagai segmen sesuai kebutuhan, contohnya, berdasarkan usia, gender, hobi
+                        maupun tingkat konsumerisme.
+                    </p>
+                    <p class="text-justify mb-2">
+                        Lalu, bagaimana cara mengetahui secara spesifik target konsumen kita?
+                    </p>
+                    <p class="text-justify mb-2">
+                        Beberapa pertanyaan di bawah ini bisa digunakan untuk menentukan target konsumen Anda!
+                    </p>
+                    <div class="text-justify mb-2">
+                        <ul class="list-disc pl-5">
+                            <li>Kepada siapa solusi Anda paling memberikan dampak positif?</li>
+                            <li>Apakah solusi Anda cocok untuk perorangan atau bisnis lain?</li>
+                            <li>Bagaimana karakter perorangan atau bisnis tersebut?</li>
+                            <li>Solusi Anda cocok untuk laki-laki atau perempuan? Atau keduanya</li>
+                            <li>Berapa umur mereka?</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="customerSegments.close()">Tutup</button>
+                </div>
+            </x-dialog>
+
+            <x-dialog id="customerRelationship" header="Customer Segments" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <p class="text-justify mb-2">
                         Jadi, tadi kita sudah menentukan Value Proposition dan segmentasi konsumen. Selanjutnya adalah
                         memahami konsumen Anda dan "mendekati" mereka.
                     </p>
@@ -202,7 +236,7 @@
                     </p>
                 </div>
                 <div class="modal-action">
-                    <button class="btn" type="button" onclick="customerSegments.close()">Tutup</button>
+                    <button class="btn" type="button" onclick="customerRelationship.close()">Tutup</button>
                 </div>
             </x-dialog>
         @else
