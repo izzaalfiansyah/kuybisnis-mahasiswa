@@ -107,7 +107,12 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Key Activities</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Key Activities</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="keyActivities.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Aktifitas Utama"
                             name="aktifitas_utama">{{ old('aktifitas_utama', $usaha?->aktifitas_utama) }}</textarea>
                         <div class="label label-alt-text">
@@ -219,7 +224,7 @@
                 </div>
             </x-dialog>
 
-            <x-dialog id="customerRelationship" header="Customer Segments" class="lg:w-3/5 max-w-full">
+            <x-dialog id="customerRelationship" header="Customer Relationship" class="lg:w-3/5 max-w-full">
                 <div class="mb-5">
                     <div class="text-justify mb-2">
                         Jadi, tadi kita sudah menentukan Value Proposition dan segmentasi konsumen. Selanjutnya adalah
@@ -271,6 +276,26 @@
                 </div>
                 <div class="modal-action">
                     <button class="btn" type="button" onclick="channels.close()">Tutup</button>
+                </div>
+            </x-dialog>
+
+            <x-dialog id="keyActivities" header="Key Activities" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <div class="text-justify mb-2">
+                        Key activities merupakan aktivitas bisnis Anda yang dijalankan sehari-hari agar dapat mencapai
+                        value proposition. Beberapa panduan pertanyaan yang perlu Anda jawab:
+                    </div>
+                    <div class="text-justify mb-2">
+                        <ul class="list-disc pl-5">
+                            <li>Aktivitas bisnis seperti apa yang dapat diterapkan di dalam perusahaan untuk membantu
+                                Anda agar konsumen puas?</li>
+                            <li>Bagaimana dengan distribusi produk/jasa anda?</li>
+                            <li>Apakah anda memiliki tenaga ahli untuk menjalankan kegiatan perusahaan sehari-hari?</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="keyActivities.close()">Tutup</button>
                 </div>
             </x-dialog>
         @else
