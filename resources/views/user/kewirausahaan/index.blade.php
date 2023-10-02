@@ -159,7 +159,12 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Revenue Streams</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Revenue Streams</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="revenueStreams.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Arus Pendapatan"
                             name="arus_pendapatan">{{ old('arus_pendapatan', $usaha?->arus_pendapatan) }}</textarea>
                         <div class="label label-alt-text">
@@ -361,6 +366,48 @@
                 </div>
                 <div class="modal-action">
                     <button class="btn" type="button" onclick="costStructures.close()">Tutup</button>
+                </div>
+            </x-dialog>
+
+            <x-dialog id="revenueStreams" header="Revenue Streams" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <div class="text-justify mb-2">
+                        Setiap perusahaan membutuhkan aliran pendapatan untuk tetap bisa menjalankan aktivitasnya
+                        sehari-hari. Revenue stream merupakan sumber pendapatan perusahaan dari berbagai sumber, seperti
+                        hasil penjualan, dividen dan sebagainya.
+                    </div>
+                    <div class="text-justify mb-2">
+                        Bisnis model canvas merupakan teknik yang efektif untuk diterapkan di dalam perusahaan karena
+                        dapat membantu memetakan bisnis Anda secara terstruktur. Anda dapat menggunakan bisnis model ini
+                        untuk mewujudkan ide-ide Anda menjadi hal yang konkret.
+                    </div>
+                    <div class="text-justify mb-2">
+                        Jika Anda membutuhkan bantuan lebih detil bagaimana cara menggunakan business model canvas,
+                        silakan hubungi kami untuk mendapatkan bantuan dari para coach.
+                    </div>
+                    <div class="text-justify mb-5">
+                        <span class="font-semibold">Always Go BIG!!!</span>
+                    </div>
+                    <div class="text-justify mb-2">
+                        <div class="font-semibold">
+                            <span class="font-italic">Push Marketing</span> dan <span class="font-italic">Pull
+                                Marketing</span> (2PM)
+                        </div>
+                        <div class="mt-1">
+                            Push Marketing merupakan strategi promosi bertujuan menyampaikan pesan kepada konsumen
+                            potensial, namun konsumen potensial tersebut belum tentu benar-benar memiliki kebutuhan
+                            terhadap produk yang dipromosikan (Grundström, 2015). Contoh Push Marketing dalam konteks
+                            online antara lain iklan yang dikirim melalui surel, iklan yang muncul saat membuka situs,
+                            dan iklan pay per click. Sedangkan pengertian Pull Marketing adalah konsumen mendefinisikan
+                            bentuk produk yang diinginkan, mencari, dan akhirnya mengkonsumsi (Papp, 2017). Hal-hal yang
+                            membuat Pull Marketing sangat populer dalam digital marketing karena berdasarkan acuan
+                            jumlah pengguna internet, sekaligus pengguna media sosial aktif (Sugiyono & goleman, daniel,
+                            boyatzis, Richard, Mckee, 2016).
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="revenueStreams.close()">Tutup</button>
                 </div>
             </x-dialog>
         @else
