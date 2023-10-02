@@ -133,7 +133,12 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Key Partners</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Key Partners</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="keyPartners.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Mitra Utama"
                             name="mitra_utama">{{ old('mitra_utama', $usaha?->mitra_utama) }}</textarea>
                         <div class="label label-alt-text">
@@ -315,6 +320,29 @@
                 </div>
                 <div class="modal-action">
                     <button class="btn" type="button" onclick="keyResources.close()">Tutup</button>
+                </div>
+            </x-dialog>
+
+            <x-dialog id="keyPartners" header="Key Partners" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <div class="text-justify mb-2">
+                        Dalam sebuah bisnis, membutuhkan partner kerja yang mendukung perusahaan Anda. Jika sampai saat
+                        ini Anda belum menemukan keunikan dari produk/jasa Anda dikarenakan kurangnya networking, Anda
+                        membutuhkan partner kerja yang dapat membantu Anda mencapai value proposition.
+                    </div>
+                    <div class="text-justify mb-2">
+                        Jika Anda membuka sebuah bakery, Anda membutuhkan supplier bahan kue
+                        yang jaraknya dekat agar bahan yang dikirim selalu fresh. Nah, supplier itulah yang menjadi key
+                        partner Anda dalam berbisnis agar Anda bisa selalu menjaga kualitas roti yang Anda jual.
+                    </div>
+                    <div class="text-justify mb-2">
+                        Jika Anda menjalankan agensi manajemen media sosial, mungkin key partner Anda adalah sebuah
+                        agensi jasa desain grafis untuk memastikan kualitas desain feed media sosial yang baik untuk
+                        diberikan kepada para klien.
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="keyPartners.close()">Tutup</button>
                 </div>
             </x-dialog>
         @else
