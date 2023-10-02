@@ -55,7 +55,12 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Value Proposition</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Value Proposition</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="valueProposition.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Manfaat bisnis bagi konsumen"
                             name="manfaat">{{ old('manfaat', $usaha?->manfaat) }}</textarea>
                         <div class="label label-alt-text">
@@ -145,6 +150,30 @@
                     </div>
                 </form>
             </div>
+
+            <x-dialog id="valueProposition" header="Value Proposition" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <p class="text-justify mb-2">
+                        Sederhananya, value proposition merupakan nilai jual produk/jasa Anda sehingga konsumen memilih
+                        perusahaan Anda daripada kompetitor. Sebelum menentukan hal yang lain, value proposition sangat
+                        krusial untuk diketahui agar bisnis Anda menjual apa yang konsumen benar-benar butuhkan dan
+                        memastikan apakah perusahaan Anda menjual solusi atas permasalahan mereka.
+                    </p>
+                    <p class="text-justify mb-2">
+                        Berikut adalah beberapa pertanyaan yang dapat membantu Anda:
+                    </p>
+                    <p class="text-justify mb-2">
+                    <ul class="list-disc pl-5">
+                        <li>Apa penyebab masalah itu terjadi?</li>
+                        <li>Mengapa konsumen ingin masalah tersebut hilang?</li>
+                        <li>Apa manfaat bisnis saya untuk konsumen?</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="valueProposition.close()">Tutup</button>
+                </div>
+            </x-dialog>
         @else
             <x-no-kelompok></x-no-kelompok>
         @endif

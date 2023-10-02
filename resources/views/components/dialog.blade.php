@@ -1,7 +1,7 @@
-@props(['id', 'header'])
+@props(['id', 'header', 'class'])
 
 <dialog id="{{ $id }}" class="modal">
-    <div class="modal-box">
+    <div class="modal-box {{ isset($class) ? $class : '' }}">
         @if (isset($header))
             <h3 class="font-bold text-lg mb-5">{{ $header }}</h3>
         @endif
