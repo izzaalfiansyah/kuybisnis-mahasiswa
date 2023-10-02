@@ -146,7 +146,12 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Cost Structures</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Cost Structures</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="costStructures.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Struktur Biaya"
                             name="struktur_biaya">{{ old('struktur_biaya', $usaha?->struktur_biaya) }}</textarea>
                         <div class="label label-alt-text">
@@ -343,6 +348,19 @@
                 </div>
                 <div class="modal-action">
                     <button class="btn" type="button" onclick="keyPartners.close()">Tutup</button>
+                </div>
+            </x-dialog>
+
+            <x-dialog id="costStructures" header="Cost Structures" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <div class="text-justify mb-2">
+                        Cost structure merupakan skema finansial yang membiayai operasional perusahaan Anda. Berapa uang
+                        yang harus dikeluarkan untuk melaksanakan aktivitas perusahaan per harinya? Berapa biaya untuk
+                        sumber daya yang dipakai? Berapa harga pemasaran produknya?
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="costStructures.close()">Tutup</button>
                 </div>
             </x-dialog>
         @else
