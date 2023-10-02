@@ -120,7 +120,12 @@
                         </div>
                     </div>
                     <div class="form-control mb-3">
-                        <label for="" class="label">Key Resources</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Key Resources</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="keyResources.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
                         <textarea rows="5" class="textarea textarea-bordered resize-none" placeholder="Sumberdaya Utama"
                             name="sumberdaya_utama">{{ old('sumberdaya_utama', $usaha?->sumberdaya_utama) }}</textarea>
                         <div class="label label-alt-text">
@@ -296,6 +301,20 @@
                 </div>
                 <div class="modal-action">
                     <button class="btn" type="button" onclick="keyActivities.close()">Tutup</button>
+                </div>
+            </x-dialog>
+
+            <x-dialog id="keyResources" header="Key Resources" class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <div class="text-justify mb-2">
+                        Agar tetap kompetitif di dalam industri bisnis yang Anda geluti, Anda membutuhkan sumber daya
+                        yang tepat karena ini adalah asset yang Anda miliki untuk mendukung aktivitas perusahaan.
+                        Beberapa contoh sederhana key resource adalah computer, ruang kerja, karyawan, kendaraan,
+                        listrik, dan lain sebagainya.
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="keyResources.close()">Tutup</button>
                 </div>
             </x-dialog>
         @else
