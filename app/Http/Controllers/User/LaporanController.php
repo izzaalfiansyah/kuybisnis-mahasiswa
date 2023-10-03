@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kelompok;
 use App\Models\Penjualan;
 use App\Models\ProsesPemasaran;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class LaporanController extends Controller
     function index($id = null)
     {
         $kelompokId = $id ?: Auth::user()->kelompok?->id;
+        $kelompok = Kelompok::find($kelompokId);
 
         $proses = ProsesPemasaran::where('kelompok_id', $kelompokId)->first();
         $total = DB::table('penjualan')->select(
@@ -137,12 +139,13 @@ class LaporanController extends Controller
             'hasil' => $hasil,
             'data_penjualan' => $data_penjualan,
             'items' => isset($items) ? $items->get() : null,
-            'kelompokId' => $kelompokId,
         ];
 
         if ($id) {
             return $data;
         }
+
+        $data['kelompok'] = $kelompok;
 
         return view('user.laporan.index', $data);
     }
