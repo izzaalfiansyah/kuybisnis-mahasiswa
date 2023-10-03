@@ -12,7 +12,7 @@
     <div class="card-body">
         <div class="flex justify-between items-center">
             <div>
-                Status: Disetujui
+                Status: {{ ['Menunggu', 'Disetujui', 'Ditolak'][(int) $kelompok->status] }}
             </div>
             <button type="button" class="btn btn-primary" onclick="modalStatus.showModal()">
                 <i class="material-icons">edit</i>
@@ -26,7 +26,7 @@
 
 <x-dialog id="modalStatus" header="Edit Status" class="w-4/6 max-w-full">
     <form action="{{ '' }}" method="POST" x-data="{
-        statusLaporan: ''
+        statusLaporan: '{{ $kelompok->status }}'
     }">
         @csrf
         @method('PUT')
@@ -228,9 +228,9 @@
         </div>
 
         <div class="mt-5 flex flex-col justify-center items-center">
-            <div class="mb-3">
+            <div class="mb-4 card p-4 text-center border w-full">
                 <input type="text" class="hidden" x-model="statusLaporan" name="status">
-                <span x-text="statusLaporan !== '' ? (statusLaporan == '1' ? 'Setuju' : 'Tolak') : ''"></span>
+                <span class="font-semibold" x-text="['Menunggu', 'Setuju', 'Tolak'][parseInt(statusLaporan)]"></span>
             </div>
             <button type="submit" class="btn btn-primary">
                 Simpan Perubahan

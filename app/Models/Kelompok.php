@@ -17,6 +17,7 @@ class Kelompok extends Model
         'asal_universitas',
         'ketua_nama',
         'ketua_nim',
+        'status',
     ];
 
     public $with = [
