@@ -18,6 +18,7 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(f
     Route::resource('/user', Admin\UserController::class, [
         'as' => 'admin'
     ]);
+    Route::put('/kelompok/kelompok/{id}/status', [Admin\KelompokController::class, 'updateStatus'])->name('admin.kelompok.update.status');
     Route::resource('/kelompok', Admin\KelompokController::class, [
         'as' => 'admin',
     ]);

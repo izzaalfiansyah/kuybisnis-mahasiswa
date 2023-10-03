@@ -31,6 +31,6 @@ class KelompokController extends Controller
         $pdf->setPaper('a4', 'landscape');
         $pdf->setWarnings(false);
 
-        return $pdf->stream($title);
+        return $pdf->download($title);
     }
 }

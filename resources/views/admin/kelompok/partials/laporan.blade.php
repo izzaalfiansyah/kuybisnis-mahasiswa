@@ -25,7 +25,7 @@
 </div>
 
 <x-dialog id="modalStatus" header="Edit Status" class="w-4/6 max-w-full">
-    <form action="{{ '' }}" method="POST" x-data="{
+    <form action="{{ route('admin.kelompok.update.status', $kelompok->id) }}" method="POST" x-data="{
         statusLaporan: '{{ $kelompok->status }}'
     }">
         @csrf

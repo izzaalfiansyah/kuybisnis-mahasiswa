@@ -31,4 +31,13 @@ class KelompokController extends Controller
 
         return view('admin.kelompok.show', compact('kelompok', 'kelompok_anggota', 'kelompok_usaha', 'kelompok_pemasaran', 'kelompok_laporan'));
     }
+
+    function updateStatus($id, Request $req)
+    {
+        $status = $req->status ?: '0';
+
+        Kelompok::where('id', $id)->update(['status' => $status]);
+
+        return redirect()->route('admin.kelompok.show', $id);
+    }
 }
