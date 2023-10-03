@@ -196,6 +196,10 @@
                             }, 400);
                         }">Print
                                 Laporan</button>
+
+
+                            <a href="{{ route('admin.kelompok.anggota.sertifikat', $kelompokId) }}" target="_blank"
+                                class="btn btn-primary">Print Sertifikat</a>
                         </div>
                     </div>
                 @else
