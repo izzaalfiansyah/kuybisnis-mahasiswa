@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Kelompok;
 use App\Models\KelompokAnggota;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class KelompokAnggotaController extends Controller
@@ -49,14 +50,14 @@ class KelompokAnggotaController extends Controller
         }
 
         $imageFile = file_get_contents(public_path('/assets/pdf/sertifikat.jpg'));
-        $image = 'data:image/png;base64,' . base64_encode($imageFile);
+        $image = 'data:image/jpg;base64,' . base64_encode($imageFile);
 
         $title = 'Sertifikat Kelompok ' . $kelompok->nama . '.pdf';
 
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.kelompok-anggota-sertifikat', compact('data_nama', 'image', 'title'));
+        $pdf = Pdf::loadView('pdf.kelompok-anggota-sertifikat', compact('data_nama', 'image', 'title'));
         $pdf->setPaper('a4', 'landscape');
         $pdf->setWarnings(false);
 
-        return $pdf->stream($title);
+        return $pdf->download($title);
     }
 }

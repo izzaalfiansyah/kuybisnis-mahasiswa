@@ -198,7 +198,7 @@
                                 Laporan</button>
 
 
-                            <a href="{{ route('admin.kelompok.anggota.sertifikat', $kelompokId) }}" target="_blank"
+                            <a href="{{ route('admin.kelompok.sertifikat', $kelompokId) }}" target="_blank"
                                 class="btn btn-primary">Print Sertifikat</a>
                         </div>
                     </div>
