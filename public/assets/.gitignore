@@ -1,4 +1,6 @@
 *
 !.gitignore
 !home
+!home/*
 !pdf
+!pdf/*
