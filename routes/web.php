@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/kelompok/{kelompokId}/anggota/sertifikat', [User\KelompokAnggotaController::class, 'sertifikat'])->name('admin.kelompok.anggota.sertifikat');
 
 Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(function () {
     Route::get('/dashboard', [Admin\BerandaController::class, 'index'])->name('admin.dashboard.index');
