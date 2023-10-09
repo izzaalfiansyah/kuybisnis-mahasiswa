@@ -45,9 +45,13 @@ class KelompokController extends Controller
             ]);
         }
 
-        return view('pdf.kelompok-sertifikat', compact('nama', 'anggota', 'image', 'title'));
+        // return view('pdf.kelompok-sertifikat', compact('nama', 'anggota', 'image', 'title'));
 
-        $pdf = Pdf::loadView('pdf.kelompok-sertifikat', compact('nama', 'anggota', 'image', 'title'));
+        $pdf = Pdf::setOptions([
+            'fontDir' => public_path('/assets/fonts'),
+            'defaultFont' => 'Montserrat-Regular',
+        ]);
+        $pdf->loadView('pdf.kelompok-sertifikat', compact('nama', 'anggota', 'image', 'title'));
         $pdf->setPaper('a4', 'potrait');
         $pdf->setWarnings(false);
 

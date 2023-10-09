@@ -7,11 +7,11 @@
             padding: 0;
         }
 
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', Arial, Helvetica, sans-serif;
             color: #242a42;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .page-break {
@@ -33,17 +33,20 @@
             top: 34%;
             left: 0;
             right: 0;
-            font-weight: bold;
+            font-weight: semibold;
             font-size: 50px;
+            letter-spacing: 3px;
             /* color: #194278; */
         }
 
         .sertifikat .anggota {
             position: absolute;
-            top: 46%;
+            top: 47%;
             left: 18%;
             right: 18%;
             font-size: 20px;
+            font-weight: lighter;
+            letter-spacing: .6px;
         }
 
         .sertifikat table {
