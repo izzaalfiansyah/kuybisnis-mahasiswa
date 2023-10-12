@@ -16,7 +16,7 @@
                     @php
                         $nextLink = null;
                         $prevLink = null;
-                        
+
                         if ($data_penjualan) {
                             $nextLink = $data_penjualan->toArray()['next_page_url'];
                             $prevLink = $data_penjualan->toArray()['prev_page_url'];
@@ -91,7 +91,7 @@
                                     'message' => 'Sedikit lagi kamu akan berhasil. Aku tahu bahwa mencapai target yang kamu inginkan bisa menjadi sesuatu yang sulit, dan aku merasa sedih mendengar bahwa kamu menghadapi kegagalan ini. Tetapi ingatlah, kegagalan hanyalah satu langkah menuju kesuksesan. Jangan biarkan kegagalan ini menghentikanmu atau meruntuhkan semangatmu.',
                                 ],
                             ];
-                            
+
                             $result = $medals[$hasil['medal']];
                         @endphp
                         <div class="stats w-full shadow">

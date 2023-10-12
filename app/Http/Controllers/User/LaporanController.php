@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kelompok;
 use App\Models\Penjualan;
 use App\Models\ProsesPemasaran;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -70,7 +71,8 @@ class LaporanController extends Controller
                     ->orderBy('tanggal', 'desc')
                     ->groupBy('tanggal');
 
-                $data_penjualan = $items->simplePaginate(7);
+                $items = $items->simplePaginate(2);
+                $data_penjualan = $items;
 
                 foreach ($data_penjualan as $item) {
                     $labels[] = formatDate($item->tanggal);
@@ -93,7 +95,8 @@ class LaporanController extends Controller
                     ->orderBy('pekan', 'desc')
                     ->groupBy('pekan');
 
-                $data_penjualan = $items->simplePaginate(5);
+                $items = $items->simplePaginate(5);
+                $data_penjualan = $items;
 
                 foreach ($data_penjualan as $item) {
                     $labels[] = $item->pekan;
@@ -116,7 +119,8 @@ class LaporanController extends Controller
                     ->orderBy('bulan', 'desc')
                     ->groupBy('bulan');
 
-                $data_penjualan = $items->simplePaginate(6);
+                $items = $items->simplePaginate(6);
+                $data_penjualan = $items;
 
                 foreach ($data_penjualan as $item) {
                     $labels[] = substr(formatDate($item->bulan), 3);
@@ -138,7 +142,7 @@ class LaporanController extends Controller
             'grafik' => $grafik,
             'hasil' => $hasil,
             'data_penjualan' => $data_penjualan,
-            'items' => isset($items) ? $items->get() : null,
+            'items' => isset($items) ? $items : null,
         ];
 
         if ($id) {
@@ -148,5 +152,76 @@ class LaporanController extends Controller
         $data['kelompok'] = $kelompok;
 
         return view('user.laporan.index', $data);
+    }
+
+    function printPenjualan($id)
+    {
+        $kelompokId = $id ?: Auth::user()->kelompok?->id;
+
+        $proses = ProsesPemasaran::where('kelompok_id', $kelompokId)->first();
+
+        if ($proses->jenis_laporan == 'harian') {
+            $items = Penjualan::select(
+                DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
+                DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
+                DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
+                DB::raw('cast(sum(biaya_variabel) as unsigned) as biaya_variabel'),
+                DB::raw('cast(sum(biaya_operasional) as unsigned) as biaya_operasional'),
+                DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
+                DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
+                DB::raw('date_format(created_at, "%Y-%m-%d") as tanggal')
+            )->where('kelompok_id', $kelompokId)
+                ->orderBy('tanggal', 'desc')
+                ->groupBy('tanggal');
+
+            $items = $items->simplePaginate(7);
+        } else if ($proses->jenis_laporan == 'mingguan') {
+            $items = Penjualan::select(
+                DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
+                DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
+                DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
+                DB::raw('cast(sum(biaya_variabel) as unsigned) as biaya_variabel'),
+                DB::raw('cast(sum(biaya_operasional) as unsigned) as biaya_operasional'),
+                DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
+                DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
+                DB::raw('date_format(created_at, "Pekan %V - %Y") as pekan')
+            )->where('kelompok_id', $kelompokId)
+                ->orderBy('pekan', 'desc')
+                ->groupBy('pekan');
+
+            $items = $items->simplePaginate(5);
+        } else {
+            $items = Penjualan::select(
+                DB::raw('cast(sum(penjualan_bersih) as unsigned) as penjualan_bersih'),
+                DB::raw('cast(avg(harga_jual_produk) as unsigned) as harga_jual_produk'),
+                DB::raw('cast(sum(biaya_tetap) as unsigned) as biaya_tetap'),
+                DB::raw('cast(sum(biaya_variabel) as unsigned) as biaya_variabel'),
+                DB::raw('cast(sum(biaya_operasional) as unsigned) as biaya_operasional'),
+                DB::raw('cast(sum(biaya_non_operasional) as unsigned) as biaya_non_operasional'),
+                DB::raw('cast(sum(biaya_pajak) as unsigned) as biaya_pajak'),
+                DB::raw('date_format(created_at, "%Y-%m") as bulan')
+            )->where('kelompok_id', $kelompokId)
+                ->orderBy('bulan', 'desc')
+                ->groupBy('bulan');
+
+            $items = $items->simplePaginate(6);
+        }
+
+
+        $data = isset($items) ? $items : [];
+
+        $title = "Laporan Hasil Kegiatan";
+
+        // return view('pdf.kelompok-laporan', compact('data', 'title'));
+
+        $pdf = Pdf::setOptions([
+            'fontDir' => public_path('/assets/fonts'),
+            'defaultFont' => 'Montserrat-Regular',
+        ]);
+        $pdf->loadView('pdf.kelompok-laporan', compact('data', 'title'));
+        $pdf->setPaper('a4', 'landscape');
+        $pdf->setWarnings(false);
+
+        return $pdf->stream($title);
     }
 }

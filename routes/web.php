@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/kelompok/{kelompokId}/anggota/sertifikat', [User\KelompokAnggotaController::class, 'sertifikat'])->name('admin.kelompok.anggota.sertifikat');
 Route::get('/kelompok/{id}/sertifikat', [User\KelompokController::class, 'sertifikat'])->name('admin.kelompok.sertifikat');
+Route::get('/kelompok/{id}/penjualan/print', [User\LaporanController::class, 'printPenjualan'])->name('admin.kelompok.penjualan.print');
 
 Route::prefix('/admin')->middleware(['auth', 'verified', 'auth_admin'])->group(function () {
     Route::get('/dashboard', [Admin\BerandaController::class, 'index'])->name('admin.dashboard.index');
