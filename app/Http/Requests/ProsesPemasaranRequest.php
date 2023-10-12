@@ -20,6 +20,7 @@ class ProsesPemasaranRequest extends FormRequest
             'jenis_laporan' => 'required|in:harian,mingguan,bulanan',
             'modal_usaha' => 'required|integer',
             'jumlah_produksi' => 'required|integer',
+            'metode_marketing' => "required|in:1,2,3",
         ];
     }
 }

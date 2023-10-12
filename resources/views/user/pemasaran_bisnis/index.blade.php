@@ -12,6 +12,7 @@
                 x-data="{
                     jenis: '{{ old('jenis', $proses?->jenis) }}',
                     metode: `{{ old('metode', $proses?->metode) }}`,
+                    metode_marketing: `{{ old('metode_marketing', $proses?->metode_marketing) }}`,
                     jenis_laporan: '{{ old('jenis_laporan', $proses?->jenis_laporan) }}',
                     modal_usaha: '{{ old('modal_usaha', $proses?->modal_usaha) }}',
                     jumlah_produksi: '{{ old('jumlah_produksi', $proses?->jumlah_produksi) }}',
@@ -28,6 +29,24 @@
                     @csrf
                     <input type="text" class="hidden" name="kelompok_id"
                         value="{{ request()->user()->kelompok?->id }}">
+                    <div class="form-control">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <label for="" class="label">Metode Marketing</label>
+                            <button class="btn btn-sm btn-ghost" type="button" onclick="metodeMarketing.showModal()">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </div>
+                        <select class="input input-bordered max-w-xl" x-model="metode_marketing"
+                            name="metode_marketing">
+                            <option value="">Pilih Metode Pemasaran</option>
+                            <option value="1">Pull Marketing</option>
+                            <option value="2">Push Marketing</option>
+                            <option value="3">Push & Pull Marketing</option>
+                        </select>
+                        <div class="label label-alt-text">
+                            <x-input-error :messages="$errors->get('metode_marketing')"></x-input-error>
+                        </div>
+                    </div>
                     <div class="form-control">
                         <label for="" class="label">Jenis Pemasaran</label>
                         <select class="input input-bordered max-w-xl" x-model="jenis" name="jenis">
@@ -153,6 +172,29 @@
                     </div>
                 </div>
             </form>
+
+            <x-dialog id="metodeMarketing" header="Push Marketing dan Pull Marketing (2PM)"
+                class="lg:w-3/5 max-w-full">
+                <div class="mb-5">
+                    <div class="mb-2">
+                        Push Marketing merupakan strategi promosi bertujuan menyampaikan pesan kepada konsumen
+                        potensial, namun konsumen potensial tersebut belum tentu benar-benar memiliki kebutuhan
+                        terhadap produk yang dipromosikan (Grundström, 2015). Contoh Push Marketing dalam konteks
+                        online antara lain iklan yang dikirim melalui surel, iklan yang muncul saat membuka situs,
+                        dan iklan pay per click.
+                    </div>
+                    <div class="mb-2">
+                        Sedangkan pengertian Pull Marketing adalah konsumen mendefinisikan
+                        bentuk produk yang diinginkan, mencari, dan akhirnya mengkonsumsi (Papp, 2017). Hal-hal yang
+                        membuat Pull Marketing sangat populer dalam digital marketing karena berdasarkan acuan
+                        jumlah pengguna internet, sekaligus pengguna media sosial aktif (Sugiyono & goleman, daniel,
+                        boyatzis, Richard, Mckee, 2016).
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <button class="btn" type="button" onclick="metodeMarketing.close()">Tutup</button>
+                </div>
+            </x-dialog>
     </div>
 @else
     <x-no-kelompok></x-no-kelompok>

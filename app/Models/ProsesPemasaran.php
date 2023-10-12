@@ -19,6 +19,7 @@ class ProsesPemasaran extends Model
         'jenis_laporan',
         'modal_usaha',
         'jumlah_produksi',
+        'metode_marketing',
     ];
 
     public $casts = [
