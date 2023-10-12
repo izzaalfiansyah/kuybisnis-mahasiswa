@@ -1,7 +1,7 @@
 @php
     $nextLink = null;
     $prevLink = null;
-    
+
     if ($kelompok_laporan['data_penjualan']) {
         $nextLink = $kelompok_laporan['data_penjualan']->toArray()['next_page_url'];
         $prevLink = $kelompok_laporan['data_penjualan']->toArray()['prev_page_url'];
@@ -51,12 +51,12 @@
                     <path
                         d="M468.81254,240.1568a2.1183,2.1183,0,0,1-1.695-.84774l-5.19679-6.92916a2.11886,2.11886,0,1,1,3.39026-2.54253l3.39992,4.53288,8.73224-13.0982a2.119,2.119,0,0,1,3.52615,2.35077l-10.39358,15.59036a2.11978,2.11978,0,0,1-1.70427.94293Z"
                         transform="translate(-274.94317 -211.19407)" fill="#fff"></path>
-                    <rect x="168.91529" y="53.41449" width="55.94642" height="11.96348" rx="5.06951"
-                        fill="#e6e6e6"></rect>
-                    <rect x="140.50202" y="77.34146" width="112.77296" height="11.96348" rx="5.06951"
-                        fill="#e6e6e6"></rect>
-                    <rect x="140.50202" y="101.26843" width="112.77296" height="11.96348" rx="5.06951"
-                        fill="#e6e6e6"></rect>
+                    <rect x="168.91529" y="53.41449" width="55.94642" height="11.96348" rx="5.06951" fill="#e6e6e6">
+                    </rect>
+                    <rect x="140.50202" y="77.34146" width="112.77296" height="11.96348" rx="5.06951" fill="#e6e6e6">
+                    </rect>
+                    <rect x="140.50202" y="101.26843" width="112.77296" height="11.96348" rx="5.06951" fill="#e6e6e6">
+                    </rect>
                     <path d="M460.72206,567.57545a9.572,9.572,0,1,1,9.572-9.572A9.572,9.572,0,0,1,460.72206,567.57545Z"
                         transform="translate(-274.94317 -211.19407)" fill="#e6e6e6"></path>
                     <path
@@ -66,12 +66,12 @@
                     <path
                         d="M410.51908,445.40424a2.11829,2.11829,0,0,1-1.69495-.84774l-5.19679-6.92916a2.11886,2.11886,0,1,1,3.39026-2.54253l3.39991,4.53288,8.73225-13.0982a2.119,2.119,0,1,1,3.52615,2.35077l-10.39358,15.59037a2.11981,2.11981,0,0,1-1.70427.94292Z"
                         transform="translate(-274.94317 -211.19407)" fill="#fff"></path>
-                    <rect x="110.62184" y="258.66194" width="55.94642" height="11.96348" rx="5.06951"
-                        fill="#e6e6e6"></rect>
-                    <rect x="82.20857" y="282.5889" width="112.77296" height="11.96348" rx="5.06951"
-                        fill="#e6e6e6"></rect>
-                    <rect x="82.20857" y="306.51587" width="112.77296" height="11.96348" rx="5.06951"
-                        fill="#e6e6e6"></rect>
+                    <rect x="110.62184" y="258.66194" width="55.94642" height="11.96348" rx="5.06951" fill="#e6e6e6">
+                    </rect>
+                    <rect x="82.20857" y="282.5889" width="112.77296" height="11.96348" rx="5.06951" fill="#e6e6e6">
+                    </rect>
+                    <rect x="82.20857" y="306.51587" width="112.77296" height="11.96348" rx="5.06951" fill="#e6e6e6">
+                    </rect>
                     <path
                         d="M658.73263,526.73553a13.21806,13.21806,0,1,1,13.21806-13.21806A13.21807,13.21807,0,0,1,658.73263,526.73553Z"
                         transform="translate(-274.94317 -211.19407)" fill="#e6e6e6"></path>
@@ -82,12 +82,12 @@
                     <path
                         d="M597.55406,358.02875a2.92518,2.92518,0,0,1-2.34058-1.17064l-7.17627-9.56852a2.92595,2.92595,0,1,1,4.68163-3.511l4.695,6.25947,12.0584-18.08737a2.92607,2.92607,0,1,1,4.86927,3.24619l-14.35254,21.52881a2.92726,2.92726,0,0,1-2.35343,1.30209C597.60835,358.02828,597.5812,358.02875,597.55406,358.02875Z"
                         transform="translate(-274.94317 -211.19407)" fill="#fff"></path>
-                    <rect x="288.15169" y="180.60024" width="77.25667" height="16.52043" rx="5.06951"
-                        fill="#3f3d56"></rect>
-                    <rect x="248.91568" y="213.64109" width="155.7287" height="16.52043" rx="5.06951"
-                        fill="#3f3d56"></rect>
-                    <rect x="248.91568" y="246.68195" width="155.7287" height="16.52043" rx="5.06951"
-                        fill="#3f3d56"></rect>
+                    <rect x="288.15169" y="180.60024" width="77.25667" height="16.52043" rx="5.06951" fill="#3f3d56">
+                    </rect>
+                    <rect x="248.91568" y="213.64109" width="155.7287" height="16.52043" rx="5.06951" fill="#3f3d56">
+                    </rect>
+                    <rect x="248.91568" y="246.68195" width="155.7287" height="16.52043" rx="5.06951" fill="#3f3d56">
+                    </rect>
                     <polygon points="450.676 463.637 437.92 463.636 431.851 414.433 450.679 414.434 450.676 463.637"
                         fill="#ffb6b6"></polygon>
                     <path
@@ -240,15 +240,13 @@
 </x-dialog>
 
 @if ($kelompok_laporan['hasil'] && $kelompok_laporan['data_penjualan'])
-    <div x-data="{
-        print: false,
-    }">
-        <div class="space-y-4" x-show="!print">
+    <div>
+        <div class="space-y-4">
             <div>
                 <div class="flex items-center justify-center space-x-4">
-                    <a href="{{ $nextLink }}" {{ !$nextLink ? 'disabled' : '' }}
+                    <a x-bind:href="`{{ $nextLink }}&tab=${selectedTab}`" {{ !$nextLink ? 'disabled' : '' }}
                         class="btn btn-primary text-xl">&laquo;</a>
-                    <a href="{{ $prevLink }}" {{ !$prevLink ? 'disabled' : '' }}
+                    <a x-bind:href="`{{ $prevLink }}&tab=${selectedTab}`" {{ !$prevLink ? 'disabled' : '' }}
                         class="btn btn-primary text-xl">&raquo;</a>
                 </div>
             </div>
@@ -298,7 +296,7 @@
                         'message' => 'Sedikit lagi kamu akan berhasil. Aku tahu bahwa mencapai target yang kamu inginkan bisa menjadi sesuatu yang sulit, dan aku merasa sedih mendengar bahwa kamu menghadapi kegagalan ini. Tetapi ingatlah, kegagalan hanyalah satu langkah menuju kesuksesan. Jangan biarkan kegagalan ini menghentikanmu atau meruntuhkan semangatmu.',
                     ],
                 ];
-                
+
                 $result = $medals[$kelompok_laporan['hasil']['medal']];
             @endphp
             <div class="stats w-full border">
@@ -399,71 +397,13 @@
 
             <div class="card bg-white border">
                 <div class="card-body">
-                    <button class="btn btn-primary" type="button"
-                        x-on:click="() => {
-                print = true;
-                const content = document.getElementById('yield-content');
-                content.style.height = '0px';
-                setTimeout(() => {
-                    window.print();
-                    setTimeout(() => {
-                        content.style.height = 'auto';
-                        print = false;
-                    }, 400);
-                }, 400);
-            }">Print
-                        Laporan</button>
+                    <a href="{{ route('admin.kelompok.penjualan.print', $kelompok->id) }}?{{ http_build_query(request()->all()) }}"
+                        target="_blank" class="btn btn-primary">Print Laporan</a>
 
                     <a href="{{ route('admin.kelompok.sertifikat', $kelompok->id) }}" target="_blank"
                         class="btn btn-primary">Print Sertifikat</a>
                 </div>
             </div>
-        </div>
-        <div x-show="print" class="bg-white fixed top-0 left-0 right-0 bottom-0 p-5 z-[999999999]">
-            <div class="mb-5">Laporan Hasil Kegiatan</div>
-            <table class="w-full border border-collapse">
-                <thead>
-                    <tr>
-                        <td class="border p-3 uppercase">Waktu</td>
-                        <td class="border p-3 uppercase">Jumlah Penjualan</td>
-                        <td class="border p-3 uppercase">Harga Jual</td>
-                        <td class="border p-3 uppercase">Total Penjualan</td>
-                        <td class="border p-3 uppercase">Total Biaya</td>
-                        <td class="border p-3 uppercase">Nilai Keuntungan</td>
-                        {{-- <td class="border p-3 uppercase">Biaya Tetap</td>
-<td class="border p-3 uppercase">Biaya Variabel</td>
-<td class="border p-3 uppercase">Biaya Operasional</td>
-<td class="border p-3 uppercase">Biaya Non Operasional</td>
-<td class="border p-3 uppercase">Biaya Pajak</td> --}}
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($kelompok_laporan['items'] as $item)
-                        <tr>
-                            <td class="border p-3">
-                                {{ $item->tanggal ?: $item->pekan ?: $item->bulan ?: '-' }}</td>
-                            <td class="border p-3">{{ $item->penjualan_bersih }}</td>
-                            <td class="border p-3">
-                                <x-format-money :value="$item->harga_jual_produk"></x-format-money>
-                            </td>
-                            <td class="border p-3">
-                                <x-format-money :value="$item->total_penjualan_bersih"></x-format-money>
-                            </td>
-                            <td class="border p-3">
-                                <x-format-money :value="$item->total_biaya"></x-format-money>
-                            </td>
-                            <td class="border p-3">
-                                <x-format-money :value="$item->nilai_keuntungan_bersih"></x-format-money>
-                            </td>
-                            {{-- <td class="border p-3">{{ $item->biaya_tetap }}</td>
-    <td class="border p-3">{{ $item->biaya_variabel }}</td>
-    <td class="border p-3">{{ $item->biaya_operasional }}</td>
-    <td class="border p-3">{{ $item->biaya_non_operasional }}</td>
-    <td class="border p-3">{{ $item->biaya_pajak }}</td> --}}
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
     </div>
 @else

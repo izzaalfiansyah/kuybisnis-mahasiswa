@@ -9,10 +9,8 @@
                 </div>
             </div>
         @else
-            <div x-data="{
-                print: false
-            }">
-                <div class="space-y-5" x-show="!print">
+            <div>
+                <div class="space-y-5">
                     @php
                         $nextLink = null;
                         $prevLink = null;
@@ -193,21 +191,11 @@
                                 }
                             });
                         </script>
-
                         <div class="card bg-white shadow">
                             <div class="card-body">
-                                <button class="btn btn-primary" type="button"
-                                    x-on:click="() => {
-                            print = true;
-                            setTimeout(() => {
-                                window.print();
-                                setTimeout(() => {
-                                    print = false;
-                                }, 400);
-                            }, 400);
-                        }">Print
-                                    Laporan</button>
 
+                                <a href="{{ route('admin.kelompok.penjualan.print', $kelompok->id) }}?{{ http_build_query(request()->all()) }}"
+                                    target="_blank" class="btn btn-primary">Print Laporan</a>
 
                                 @if ($kelompok->status == '1')
                                     <a href="{{ route('admin.kelompok.sertifikat', $kelompok->id) }}" target="_blank"
@@ -232,53 +220,6 @@
                         </div>
                     @endif
                 </div>
-                <div x-show="print" class="bg-white fixed top-0 left-0 right-0 bottom-0 p-5 z-[999999999]">
-                    <div class="mb-5">Laporan Hasil Kegiatan</div>
-                    <table class="w-full border border-collapse">
-                        <thead>
-                            <tr>
-                                <td class="border p-3 uppercase">Waktu</td>
-                                <td class="border p-3 uppercase">Jumlah Penjualan</td>
-                                <td class="border p-3 uppercase">Harga Jual</td>
-                                <td class="border p-3 uppercase">Total Penjualan</td>
-                                <td class="border p-3 uppercase">Total Biaya</td>
-                                <td class="border p-3 uppercase">Nilai Keuntungan</td>
-                                {{-- <td class="border p-3 uppercase">Biaya Tetap</td>
-        <td class="border p-3 uppercase">Biaya Variabel</td>
-        <td class="border p-3 uppercase">Biaya Operasional</td>
-        <td class="border p-3 uppercase">Biaya Non Operasional</td>
-        <td class="border p-3 uppercase">Biaya Pajak</td> --}}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($items as $item)
-                                <tr>
-                                    <td class="border p-3">
-                                        {{ $item->tanggal ?: $item->pekan ?: $item->bulan ?: '-' }}</td>
-                                    <td class="border p-3">{{ $item->penjualan_bersih }}</td>
-                                    <td class="border p-3">
-                                        <x-format-money :value="$item->harga_jual_produk"></x-format-money>
-                                    </td>
-                                    <td class="border p-3">
-                                        <x-format-money :value="$item->total_penjualan_bersih"></x-format-money>
-                                    </td>
-                                    <td class="border p-3">
-                                        <x-format-money :value="$item->total_biaya"></x-format-money>
-                                    </td>
-                                    <td class="border p-3">
-                                        <x-format-money :value="$item->nilai_keuntungan_bersih"></x-format-money>
-                                    </td>
-                                    {{-- <td class="border p-3">{{ $item->biaya_tetap }}</td>
-            <td class="border p-3">{{ $item->biaya_variabel }}</td>
-            <td class="border p-3">{{ $item->biaya_operasional }}</td>
-            <td class="border p-3">{{ $item->biaya_non_operasional }}</td>
-            <td class="border p-3">{{ $item->biaya_pajak }}</td> --}}
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         @endif
     @else
         <x-no-kelompok></x-no-kelompok>

@@ -14,12 +14,13 @@
 
         table th {
             text-transform: uppercase;
+            /* font-weight: normal; */
         }
 
         table th,
         table td {
             border: 1px solid black;
-            padding: 3px;
+            padding: 5px;
         }
     </style>
 </head>
@@ -41,7 +42,7 @@
         <tbody>
             @foreach ($data as $item)
                 <tr>
-                    <td>
+                    <td style="white-space: nowrap">
                         {{ $item->tanggal ?: $item->pekan ?: $item->bulan ?: '-' }}</td>
                     <td>{{ $item->penjualan_bersih }}</td>
                     <td>

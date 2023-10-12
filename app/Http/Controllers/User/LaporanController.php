@@ -71,7 +71,7 @@ class LaporanController extends Controller
                     ->orderBy('tanggal', 'desc')
                     ->groupBy('tanggal');
 
-                $items = $items->simplePaginate(2);
+                $items = $items->simplePaginate(7);
                 $data_penjualan = $items;
 
                 foreach ($data_penjualan as $item) {
@@ -219,7 +219,7 @@ class LaporanController extends Controller
             'defaultFont' => 'Montserrat-Regular',
         ]);
         $pdf->loadView('pdf.kelompok-laporan', compact('data', 'title'));
-        $pdf->setPaper('a4', 'landscape');
+        $pdf->setPaper('a4', 'potrait');
         $pdf->setWarnings(false);
 
         return $pdf->stream($title);
