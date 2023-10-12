@@ -26,6 +26,10 @@ class PenjualanController extends Controller
     {
         $data = $req->validated();
 
+        foreach ($req->file('foto_bukti') as $fotoBukti) {
+            $data['foto_bukti'][] = $fotoBukti->store('assets/penjualan/foto_bukti', ['disk' => 'public_upload']);
+        }
+
         Penjualan::create($data);
 
         return redirect()->route('user.penjualan.index')->with('success_message', 'data penjualan berhasil ditambah');
@@ -40,6 +44,15 @@ class PenjualanController extends Controller
     function update(PenjualanRequest $req, $id)
     {
         $data = $req->validated();
+
+        if ($req->foto_bukti) {
+            unset($data['foto_bukti']);
+            foreach ($req->file('foto_bukti') as $fotoBukti) {
+                $data['foto_bukti'][] = $fotoBukti->store('assets/penjualan/foto_bukti', ['disk' => 'public_upload']);
+            }
+        } else {
+            unset($data['foto_bukti']);
+        }
 
         Penjualan::find($id)->update($data);
 

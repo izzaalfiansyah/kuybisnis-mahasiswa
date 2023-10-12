@@ -17,6 +17,7 @@ class PenjualanRequest extends FormRequest
             'biaya_operasional' => 'required|integer',
             'biaya_non_operasional' => 'required|integer',
             'biaya_pajak' => 'required|integer',
+            'foto_bukti.*' => 'required|file|max:5000',
         ];
     }
 }

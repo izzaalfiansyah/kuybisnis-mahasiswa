@@ -45,6 +45,20 @@
                                                 class="material-icons text-base">delete</i></button>
                                     </td>
                                 </tr>
+                                <tr class="bg-gray-50">
+                                    <td>Foto Bukti :</td>
+                                    <td colspan="6">
+                                        <div class="mt-3 grid lg:grid-cols-4 grid-cols-2 gap-4">
+                                            @if ($item?->foto_bukti)
+                                                @foreach ($item?->foto_bukti as $foto)
+                                                    <img src="{{ asset($foto) }}" alt=""
+                                                        class="border rounded object-cover">
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                </tr>
                             @empty
                                 <tr>
                                     <td colspan="6" class="text-center">Penjualan belum tersedia.</td>

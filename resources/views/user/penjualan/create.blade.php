@@ -1,5 +1,6 @@
 <x-app-layout title="Tambah Penjualan">
-    <form method="post" action="{{ route('user.penjualan.store') }}" class="card bg-white shadow">
+    <form method="post" action="{{ route('user.penjualan.store') }}" class="card bg-white shadow"
+        enctype="multipart/form-data">
         @csrf
 
         <input type="text" class="hidden" name="kelompok_id" value="{{ request()->user()->kelompok->id }}">
@@ -99,6 +100,14 @@
                     <label for="" class="label">Nilai Keuntungan Bersih</label>
                     <input disabled type="number" min="0" class="input input-bordered"
                         placeholder="Nilai Keuntungan Bersih" x-bind:value="nilaiKeuntunganBersih()">
+                </div>
+                <div class="form-control">
+                    <label for="" class="label">Foto Bukti</label>
+                    <input type="file" multiple class="file-input file-input-bordered max-w-xl"
+                        name="foto_bukti[]" accept="image/*">
+                    <div class="label label-alt-text">
+                        <x-input-error :messages="$errors->get('foto_bukti')" />
+                    </div>
                 </div>
             </div>
             <div class="mt-5 space-x-4">

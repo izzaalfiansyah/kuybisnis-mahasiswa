@@ -20,6 +20,7 @@ class Penjualan extends Model
         'biaya_operasional',
         'biaya_non_operasional',
         'biaya_pajak',
+        'foto_bukti',
     ];
 
     public $casts = [
@@ -30,6 +31,7 @@ class Penjualan extends Model
         'biaya_operasional' => 'integer',
         'biaya_non_operasional' => 'integer',
         'biaya_pajak' => 'integer',
+        'foto_bukti' => 'object',
     ];
 
     public $appends = [
