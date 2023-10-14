@@ -77,12 +77,14 @@
             @endforeach
         </tbody>
     </table>
-    <br><br>
-    <div class="ttd">
-        <div>
-            <div>Ketua Program Studi Agribisnis</div>
-            <img src="{{ $ttd }}" alt="">
-            <div>Fefi Nurdiana Widjayanti, S.P., M.P.</div>
+    @if ($validated)
+        <br><br>
+        <div class="ttd">
+            <div>
+                <div>Ketua Program Studi Agribisnis</div>
+                <img src="{{ $ttd }}" alt="">
+                <div>Fefi Nurdiana Widjayanti, S.P., M.P.</div>
+            </div>
         </div>
-    </div>
+    @endif
 </body>

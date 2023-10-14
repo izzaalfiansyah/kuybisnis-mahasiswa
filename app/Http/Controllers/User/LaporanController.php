@@ -159,6 +159,7 @@ class LaporanController extends Controller
         $kelompokId = $id ?: Auth::user()->kelompok?->id;
 
         $proses = ProsesPemasaran::where('kelompok_id', $kelompokId)->first();
+        $kelompok = Kelompok::find($id);
 
         if ($proses->jenis_laporan == 'harian') {
             $items = Penjualan::select(
@@ -215,13 +216,15 @@ class LaporanController extends Controller
         $ttdFile = file_get_contents(public_path('/assets/pdf/ttd.png'));
         $ttd = 'data:image/png;base64,' . base64_encode($ttdFile);
 
-        // return view('pdf.kelompok-laporan', compact('data', 'title', 'ttd'));
+        $validated = $kelompok->status == '1';
+
+        // return view('pdf.kelompok-laporan', compact('data', 'title', 'ttd', 'validated'));
 
         $pdf = Pdf::setOptions([
             'fontDir' => public_path('/assets/fonts'),
             'defaultFont' => 'Montserrat-Regular',
         ]);
-        $pdf->loadView('pdf.kelompok-laporan', compact('data', 'title', 'ttd'));
+        $pdf->loadView('pdf.kelompok-laporan', compact('data', 'title', 'ttd', 'validated'));
         $pdf->setPaper('a4', 'potrait');
         $pdf->setWarnings(false);
 
