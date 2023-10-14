@@ -212,13 +212,16 @@ class LaporanController extends Controller
 
         $title = "Laporan Hasil Kegiatan";
 
-        // return view('pdf.kelompok-laporan', compact('data', 'title'));
+        $ttdFile = file_get_contents(public_path('/assets/pdf/ttd.png'));
+        $ttd = 'data:image/png;base64,' . base64_encode($ttdFile);
+
+        // return view('pdf.kelompok-laporan', compact('data', 'title', 'ttd'));
 
         $pdf = Pdf::setOptions([
             'fontDir' => public_path('/assets/fonts'),
             'defaultFont' => 'Montserrat-Regular',
         ]);
-        $pdf->loadView('pdf.kelompok-laporan', compact('data', 'title'));
+        $pdf->loadView('pdf.kelompok-laporan', compact('data', 'title', 'ttd'));
         $pdf->setPaper('a4', 'potrait');
         $pdf->setWarnings(false);
 

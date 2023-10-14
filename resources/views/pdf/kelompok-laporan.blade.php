@@ -22,6 +22,22 @@
             border: 1px solid black;
             padding: 5px;
         }
+
+        .ttd {
+            position: relative;
+        }
+
+        .ttd>div {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .ttd div img {
+            width: 180px;
+            margin-top: -10px;
+            margin-bottom: -18px;
+        }
     </style>
 </head>
 
@@ -61,4 +77,12 @@
             @endforeach
         </tbody>
     </table>
+    <br><br>
+    <div class="ttd">
+        <div>
+            <div>Ketua Program Studi Agribisnis</div>
+            <img src="{{ $ttd }}" alt="">
+            <div>Fefi Nurdiana Widjayanti, S.P., M.P.</div>
+        </div>
+    </div>
 </body>
