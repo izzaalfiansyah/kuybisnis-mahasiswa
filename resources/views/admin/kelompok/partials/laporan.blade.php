@@ -343,6 +343,13 @@
                                     <span class="text-sm font-semibold">Tervalidasi</span>
                                 </span>
                             </div>
+                        @else
+                            <div class="flex flex-row">
+                                <span
+                                    class="mb-4 flex bg-red-500 rounded px-3 py-0.5 items-center space-x-2 text-white">
+                                    <span class="text-sm font-semibold">Belum Tervalidasi</span>
+                                </span>
+                            </div>
                         @endif
                         {{ $result['message'] }}
                     </div>
